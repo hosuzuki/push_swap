@@ -11,4 +11,12 @@ typedef struct s_list
 	struct s_list	*next;
 } t_node;
 
+typedef struct s_sort
+{
+	int		*array;
+	size_t	size;
+} t_sort;
+
+
+
 #endif
