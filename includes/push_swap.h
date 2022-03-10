@@ -24,5 +24,20 @@ typedef struc s_stacks
 	t_sort	*sort;
 }	t_stacks;
 
+enum error_handling
+{
+	SENTINEL_ERROR;
+	ALLOC_ERROR;
+	INVALID_INPUT;
+	STACK_ERROR;
+	PRESORT_ERROR;
+	SORTED_MALLOC_ERROR;
+};
+
+int	is_digit_str(int sum, char *argv[]);
+void	free_stack(t_stack *stack, int count);
+
+t_stack	*init_stack(int argc, char **argv);
+void	shutdown(enum error_handling msg);
 
 #endif
