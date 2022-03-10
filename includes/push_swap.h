@@ -17,6 +17,12 @@ typedef struct s_sort
 	size_t	size;
 } t_sort;
 
+typedef struc s_stacks
+{
+	t_stack	*a;
+	t_stack	*b;
+	t_sort	*sort;
+}	t_stacks;
 
 
 #endif
