@@ -18,5 +18,8 @@ int main(int argc, char **argv)
 	stack_b = init_stack(0, NULL);
 	if (!stack_a || !stack_b)
 		shutdown(STACK_ERROR);
+	sort = pre_sort(stack_a);
+	record = record_array(stack_a->val * 12);
+
 	return (0);
 }
