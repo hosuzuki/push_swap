@@ -32,6 +32,10 @@ enum error_handling
 	STACK_ERROR;
 	PRESORT_ERROR;
 	SORTED_MALLOC_ERROR;
+	MAIN_STACK_ERROR;
+	MAIN_SORT_ERROR;
+	CASE_GT;
+	SHAM_ERROR;
 };
 
 int	is_digit_str(int sum, char *argv[]);
