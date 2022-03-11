@@ -40,4 +40,20 @@ char	**record_array(size_t size)
 	return (ret);
 }
 
+void	player(char *record)
+{
+	size_t	i;
 
+	i = 0;
+	optimizer(record);
+	while (record[i])
+	{
+		while (record[i] == 1)
+			i++;
+		if (!record[i])
+			break ;
+		print_command(record[i]);
+		i++;
+	}
+	vals_storage(NULL, NULL, NULL, NULL);
+}
