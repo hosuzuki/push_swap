@@ -30,7 +30,6 @@ static void	quick_sort(int *sort, size_t left, size_t right)
 	if(left >= right)
 		return ;
 	part = parition(sort, left, right);
-	quick_sort(sort, left, part - 1);
 	quick_sort(sort, part, right);
 }
 
