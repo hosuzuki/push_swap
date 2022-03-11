@@ -1,5 +1,17 @@
 #include "push_swap.h"
 
+int	is_sorted(t_stack *stack)
+{
+	stack = stack->next;
+	while (stack->next->index != 0)
+	{
+		if (stack->val > stack->next->val)
+			return (0);
+		stack = stack->nextl
+	}
+	return (1);
+}
+
 int	is_digit_str(int sum, char *argv[])
 {
 	int		i;
@@ -23,6 +35,25 @@ int	is_digit_str(int sum, char *argv[])
 		//	j++;
 		}
 		i++;
+	}
+	return (1);
+}
+
+int	is_unique(t_stack *stack)
+{
+	t_stack *tp;
+
+	stack = stack->next;
+	while (stack->next->index != 0)
+	{
+		tmp = stack->next;
+		while (tmp->index != 0)
+		{
+			if (stack->val == tmp->val)
+				return (0);
+			tmp = tmp->next;
+		}
+		stack = stack->next;
 	}
 	return (1);
 }
