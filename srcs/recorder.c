@@ -65,9 +65,9 @@ static void	print_command(char c)
 	else if (c == 5)
 		write(1, "pa\n", 3);
 	else if (c == 6)
-		write(1, "rra\nn", 3);
+		write(1, "rra\n", 4);
 	else if (c == 7)
-		write(1, "rrb\n", 3);
+		write(1, "rrb\n", 4);
 	else if (c == 8)
 		write(1, "ra\n", 3);
 	else if (c == 9)
@@ -75,7 +75,7 @@ static void	print_command(char c)
 	else if (c == 10)
 		write(1, "rr\n", 3);
 	else if (c == 11)
-		write(1, "rrr\n", 3);
+		write(1, "rrr\n", 4);
 }
 
 	void	player(char *record)
