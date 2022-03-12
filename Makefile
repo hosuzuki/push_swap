@@ -1,7 +1,20 @@
 NAME = push_swap
 BONUS_NAME = checker
 SRC = srcs/main.c \
-			srcs/arg_check.c
+			srcs/base_act.c \
+			srcs/search_val.c \
+			srcs/few_args.c \
+			srcs/pre_sort.c \
+			srcs/arg_check.c \
+			srcs/init_stack.c \
+			srcs/many_args_atob.c \
+			srcs/many_args_btoa.c \
+			srcs/many_args_btoa2.c \
+			srcs/recorder.c \
+			srcs/vals.c \
+			srcs/optimize.c \
+			srcs/shutdown.c
+
 BONUS_SRC = srcs/checker.c
 OBJ = $(SRC:.c=.o)
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
