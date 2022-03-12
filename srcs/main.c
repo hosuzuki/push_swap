@@ -31,7 +31,7 @@ static void size_branch(t_stack *stack_a, t_stack *stack_b, t_sort *sort)
 		case_gt_six(stack_a, stack_b, sort);
 }
 
-int main(int argc, char **argv)
+int main(int argc, char **argv) // hve to be much simpler/ get argv /sort/print command/
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -51,7 +51,7 @@ int main(int argc, char **argv)
 		shutdown(MAIN_STACK_ERROR);
 	sort = pre_sort(stack_a);
 	record = record_array(stack_a->val * 12);
-	if (!is_unique(stack_a))
+	if (!is_unique(stack_a)) // this have to be before sort
 		error_exit();
 	if (!sort || !record || is_sorted(stack_a))
 		shutdown(MAIN_SORT_ERROR);
