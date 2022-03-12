@@ -2,7 +2,7 @@
 
 void	free_stack(t_stack *stack, int count)
 {
-	t_stack	*heap;
+	t_stack	*head;
 	t_stack	*tmp;
 	
 	head = stack;
@@ -39,7 +39,7 @@ void	free_all(t_stack *stack1, t_stack *stack2, t_sort *sort, char *record)
 void	vals_storage(t_stack *stack, t_stacks *stacks, t_sort *sort, char **record)
 {
 	static t_stack	*st[2];
-	static t_stack	*sts;
+	static t_stacks	*sts;
 	static t_sort	*s;
 	static char 		**r;
 

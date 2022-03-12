@@ -7,7 +7,7 @@ int	is_sorted(t_stack *stack)
 	{
 		if (stack->val > stack->next->val)
 			return (0);
-		stack = stack->nextl
+		stack = stack->next;
 	}
 	return (1);
 }
@@ -41,7 +41,7 @@ int	is_digit_str(int sum, char *argv[])
 
 int	is_unique(t_stack *stack)
 {
-	t_stack *tp;
+	t_stack *tmp;
 
 	stack = stack->next;
 	while (stack->next->index != 0)
@@ -58,7 +58,7 @@ int	is_unique(t_stack *stack)
 	return (1);
 }
 
-int atoi_and errcheck(char *str, t_stack *stack, size_t count)
+int atoi_and_errcheck(char *str, t_stack *stack, size_t count)
 {
 	int		sign;
 	long long ans;

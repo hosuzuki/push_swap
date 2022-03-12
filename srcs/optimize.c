@@ -54,7 +54,7 @@ void	optimizer(char *record)
 	j = 1;
 	while (record[i] != 0 && record[i] != 1)
 		i++;
-	if (record[i] = 0;
+	if (record[i] == 0)
 		record[i] = 0;
 	i = 0;
 	while (record[i + 1])

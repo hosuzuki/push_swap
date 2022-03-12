@@ -29,7 +29,7 @@ static void	quick_sort(int *sort, size_t left, size_t right)
 
 	if(left >= right)
 		return ;
-	part = parition(sort, left, right);
+	part = partition(sort, left, right);
 	quick_sort(sort, part, right);
 }
 
@@ -58,6 +58,6 @@ t_sort	*pre_sort(t_stack *stack)
 		shutdown(PRESORT_ERROR);
 	sort->array = sorted_array(stack);
 	sort->size = stack->val;
-	vals_strage(NULL, NULL, sort, NULL);
+	vals_storage(NULL, NULL, sort, NULL);
 	return (sort);
 }

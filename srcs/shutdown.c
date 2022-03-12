@@ -9,5 +9,5 @@ void	shutdown(enum error_handling msg)
 void	error_exit(void)
 {
 	write(2, "Error\n", 6);
-	shutdown();
+	shutdown(0);
 }

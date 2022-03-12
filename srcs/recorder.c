@@ -9,7 +9,7 @@ char	**record_array(size_t size)
 	ret = (char **)malloc(sizeof(char *));
 	if (!record || !ret) // Need free record ore ret?
 		return (NULL);
-	ft_memset(record, 1 size);
+	ft_memset(record, 1, size);
 	record[size] = '\0';
 	*ret = record;
 	vals_storage(NULL, NULL, NULL, ret);

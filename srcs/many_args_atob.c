@@ -2,7 +2,7 @@
 
 static int	under_pivot(t_stack *stack, int pv, int lv, int rv)
 {
-	t_tack	*head;
+	t_stack	*head;
 	int		count;
 
 	count = 0;
@@ -29,8 +29,8 @@ static void	replace_atob(t_stacks *stacks, int r_count, int first)
 static int	atob_push_rot(t_stacks *stacks, int r_count)
 {
 	push(stacks->a, stacks->b, 1);
-	rot(stacks-->b, 2);
-	r_coun++;
+	rot(stacks->b, 2);
+	r_count++;
 	return (r_count);
 }
 
@@ -43,7 +43,7 @@ static void	divide_atob(t_stacks *stacks, size_t p[], int count, int first)
 	{
 		if (stacks->a->next->val <= stacks->sort->array[p[0]])
 		{
-			if (first = 1)
+			if (first == 1)
 				r_count = atob_push_rot(stacks, r_count);
 			else
 				push(stacks->a, stacks->b, 1);
@@ -80,7 +80,7 @@ void	atob(t_stacks *stacks, size_t l, size_t r, int first)
 	p[0] = (l + p[1]) /2;
 	count = under_pivot(stacks->a, stacks->sort->array[p[1]],
 			stacks->sort->array[l], stacks->sort->array[r]);
-	devide_atob(stacks, p, count, first);
+	divide_atob(stacks, p, count, first);
 	atob(stacks, p[1] + 1, r, 0);
 	btoa(stacks, p[0] + 1, p[1]);
 	btoa(stacks, l, p[0]);
