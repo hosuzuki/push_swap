@@ -91,8 +91,8 @@ void	case_ngt_six(t_stack *stack1, t_stack *stack2);
 // base_act.c
 void	swap(t_stack *stack, int ab);
 void	push(t_stack *stack1, t_stack *stack2, int ab);
-void	r_rot(t_stack *stack, int ab);
-void	rot(t_stack *stack, int ab);
+void	rot_down(t_stack *stack, int ab);
+void	rot_up(t_stack *stack, int ab);
 
 
 
