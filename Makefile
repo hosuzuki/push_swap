@@ -1,19 +1,23 @@
 NAME = push_swap
 BONUS_NAME = checker
 SRC = srcs/main.c \
-			srcs/base_act.c \
-			srcs/search_val.c \
-			srcs/few_args.c \
-			srcs/pre_sort.c \
-			srcs/arg_check.c \
+			srcs/validate_number.c \
+			srcs/exit.c \
 			srcs/init_stack.c \
-			srcs/many_args_atob.c \
-			srcs/many_args_btoa.c \
-			srcs/many_args_btoa2.c \
+			srcs/free.c \
+			srcs/pre_sort.c \
 			srcs/recorder.c \
-			srcs/vals.c \
-			srcs/optimize.c \
-			srcs/shutdown.c
+			srcs/small_case.c \
+			srcs/base_act.c 
+
+#			srcs/search_val.c \
+#			srcs/few_args.c \
+#			srcs/arg_check.c \
+#			srcs/many_args_atob.c \
+#			srcs/many_args_btoa.c \
+#			srcs/many_args_btoa2.c \
+#			srcs/vals.c \
+#			srcs/optimize.c \
 
 BONUS_SRC = srcs/checker.c
 OBJ = $(SRC:.c=.o)
@@ -40,7 +44,7 @@ $(LIB) :
 	$(MAKE) -C ./libft
 
 .c.o :
-	$(CC) $(FLAGS) -c $< -o $(<:.c=.o) $(HEAD)
+	$(CC) $(FLAGS) -c $< -o $(<:.c=.o) $(HEAD) -g
 
 clean :
 	$(MAKE) clean -C ./libft
