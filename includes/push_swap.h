@@ -26,8 +26,22 @@ typedef struct s_stacks
 
 enum error_handling
 {
-	SENTINEL_ERROR,
-	ALLOC_ERROR,
+	CONTINUE,
+	ERROR,
+	STR_IS_ALL1,
+	STR_IS_ALL2,
+	INIT_STACK,
+	ALLOC_STACK,
+	NO_DUPLICATE,
+	ATOI_WITH,
+	PRE_SORT1,
+	PRE_SORT2,
+	ALLOC_RECORD,
+	ALLOC_REC,
+
+
+	/*
+  ALLOC_ERROR,
 	INVALID_INPUT,
 	STACK_ERROR,
 	PRESORT_ERROR,
@@ -36,7 +50,32 @@ enum error_handling
 	MAIN_SORT_ERROR,
 	CASE_GT,
 	SHAM_ERROR,
+*/
 };
+
+//validate_number.c
+t_stack	*validate_number(int argc, char **argv);
+
+
+//exit.c
+void	exit_with_status(enum error_handling status);
+void	print_error_and_exit(enum error_handling status);
+
+//free
+void	free_stack(t_stack *stack, int count);
+void	free_all(t_stack *stack1, t_stack *stack2, t_sort *sort, char *record);
+
+// pre_sort.c
+t_sort	*pre_sort(t_stack *stack);
+
+// recorder.c
+char	**record_array(size_t size);
+void	recorder(char **record, int act);
+void	player(char *record);
+
+
+
+
 
 // arg_check.c
 int		is_sorted(t_stack *stack);
@@ -56,8 +95,6 @@ void	case_three(t_stack *stack);
 void	case_ngt_six(t_stack *stack1, t_stack *stack2);
 
 // vals.c
-void	free_stack(t_stack *stack, int count);
-void	free_all(t_stack *stack1, t_stack *stack2, t_sort *sort, char *record);
 void	vals_storage(t_stack *stack, t_stacks *stacks,
 			t_sort *sort, char **record);
 
@@ -82,14 +119,6 @@ void	btoa_pushall(t_stacks *stacks, size_t l, size_t r);
 
 // optimizer.c
 void	optimizer(char *record);
-
-// pre_sort.c
-t_sort	*pre_sort(t_stack *stack);
-
-// recorder.c
-char	**record_array(size_t size);
-void	recorder(char **record, int act);
-void	player(char *record);
 
 // search_val.c
 void	set_min(t_stack *stack, int ab);
