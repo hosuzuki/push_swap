@@ -23,7 +23,8 @@ void	swap(t_stack *stack, int ab)
 		recorder(NULL, 3);
 }
 
-void	push(t_stack *stack1, t_stack *stack2, int ab)
+/*
+ void	push(t_stack *stack1, t_stack *stack2, int ab)
 {
 	t_stack *head1;
 	t_stack *head2;
@@ -95,3 +96,4 @@ void	rot(t_stack *stack, int ab)
 	else if (ab == 2)
 		recorder(NULL, 9);
 }
+*/
