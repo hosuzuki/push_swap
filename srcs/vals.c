@@ -1,44 +1,8 @@
 #include "push_swap.h"
 
-void	free_stack(t_stack *stack, int count)
-{
-	t_stack	*head;
-	t_stack	*tmp;
-	
-	head = stack;
-	stack = stack->next;
-	while (stack != head && count)
-	{
-		tmp = stack->next;
-		free(stack);
-		stack = tmp;
-		count--;
-	}
-	free(head);
-}
-
-static void free_stackab(t_stack *stack1, t_stack *stack2)
-{
-	if (stack1)
-		free_stack(stack1, stack1->val);
-	if (stack2)
-		free_stack(stack2, stack2->val);
-}
-
-void	free_all(t_stack *stack1, t_stack *stack2, t_sort *sort, char *record)
-{
-	free (record);
-	if (sort)
-	{
-		free(sort->array);
-		free(sort);
-	}
-	free_stackab(stack1, stack2);
-}
-
 void	vals_storage(t_stack *stack, t_stacks *stacks, t_sort *sort, char **record)
 {
-	static t_stack	*st[2];
+	static t_stack	*st[2]; //forbidden
 	static t_stacks	*sts;
 	static t_sort	*s;
 	static char 		**r;
@@ -54,9 +18,9 @@ void	vals_storage(t_stack *stack, t_stacks *stacks, t_sort *sort, char **record)
 		return ;
 	}
 	if (stack && !st[0])
-		st[0] = stack;
+		st[0] = stack; // stack_a will be stored here.
 	else if (stack && !st[1] && st[0] != stack)
-		st[1] = stack;
+		st[1] = stack; // stack_b will be stored here.
 	if (stacks)
 		sts = stacks;
 	if (sort)
