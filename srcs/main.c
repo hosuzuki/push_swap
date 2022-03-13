@@ -52,7 +52,7 @@ static int pick_algo(t_stack *stack_a, t_stack *stack_b, t_sort *sort)
 
 # include <stdio.h> // this have be away
 
-static void print_argv(t_stack *stack_a, int argc, char **argv) // has to be deleted
+static void print_argv(t_stack *stack_a, int argc) // has to be deleted
 {
 	t_stack	*tmp = stack_a;
 	printf("argv: ");
@@ -74,7 +74,21 @@ static void print_sort(int argc, t_sort *sort)
 
 static void print_stack(t_stack *stack_a, t_stack *stack_b)
 {
-
+	printf("stack_a\n");
+	int sum = stack_a->val;
+	for (int i = 0; i < sum; i++)
+	{
+		stack_a = stack_a->next;
+		printf("%d ", stack_a->val);
+	}
+	printf("\nstack_b\n");
+	sum = stack_b->val;
+	for (int i = 0; i < sum; i++)
+	{
+		stack_b = stack_b->next;
+		printf("%d ", stack_b->val);
+	}
+}
 
 int main(int argc, char **argv)
 {
@@ -86,7 +100,7 @@ int main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	stack_a = validate_number(argc - 1, argv + 1);
-	print_argv(stack_a, argc, argv); //has to be deleted
+	print_argv(stack_a, argc); //has to be deleted
 	sort = pre_sort(stack_a);
 	print_sort(argc, sort); // has to be deleted
 	record = record_array(stack_a->val * 20, stack_a, sort);
