@@ -1,6 +1,7 @@
 #include "push_swap.h"
 
-static void	case_gt_six(t_stack *stack_a, t_stack *stack_b, t_sort *sort)
+/*
+ * static void	case_gt_six(t_stack *stack_a, t_stack *stack_b, t_sort *sort)
 {
 	t_stacks *stacks;
 
@@ -31,17 +32,29 @@ static void size_branch(t_stack *stack_a, t_stack *stack_b, t_sort *sort)
 		case_gt_six(stack_a, stack_b, sort);
 }
 
+*/
+
+# include <stdio.h> // this have be away
+
 int main(int argc, char **argv) // hve to be much simpler/ get argv /sort/print command/
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	t_sort	*sort;
-	char	**record;
+	//t_sort	*sort;
+	//char	**record;
 	
 	if (argc < 2)
 		return (0);
-	validate_number( 
-		
+	stack_a = validate_number(argc - 1, argv + 1);
+	stack_b = init_stack(0, NULL);
+	for (int i = 0; i < 5 ; i++)
+	{
+		stack_a = stack_a->next;
+		printf("stack_a: %d\n", stack_a->val);
+	}
+	free_stack(stack_a, 5);
+	free_stack(stack_b, 0);
+/*
 	if (!is_digit_str(argc - 1, argv + 1))
 	{
 		write(2, "Error\n", 6);
@@ -49,15 +62,23 @@ int main(int argc, char **argv) // hve to be much simpler/ get argv /sort/print 
 	}
 	stack_a = init_stack(argc, argv);
 	stack_b = init_stack(0, NULL);
+
 	if (!stack_a || !stack_b) // separate
 		shutdown(MAIN_STACK_ERROR);
+*/
+
+
+
+	/*
 	sort = pre_sort(stack_a);
 	record = record_array(stack_a->val * 12);
-	if (!is_unique(stack_a)) // this have to be before sort
-		error_exit();
+//	if (!is_unique(stack_a)) // this have to be before sort
+//		error_exit();
 	if (!sort || !record || is_sorted(stack_a))
 		shutdown(MAIN_SORT_ERROR);
 	size_branch(stack_a, stack_b, sort);
 	player(*record);
+*/
+
 	return (0);
 }
