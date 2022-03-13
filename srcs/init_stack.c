@@ -44,7 +44,7 @@ static t_stack	*alloc_stack(t_stack *head, size_t i)
 	{
 		if (head != NULL)
 			free_stack(head, i);
-		exit_with_number(ALLOC_STACK);
+		exit_with_status(ALLOC_STACK);
 	}
 	return (stack);
 }

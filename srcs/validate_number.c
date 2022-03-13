@@ -37,7 +37,7 @@ static void	str_is_all_digit(int argc, char **argv)
 		while (str[i])
 		{
 			if (!ft_isdigit(str[i++]))
-				exit (STR_IS_ALL2);
+				print_error_and_exit(STR_IS_ALL2);
 //			if (argv[i])
 //				i++;
 		}
@@ -55,7 +55,7 @@ t_stack	*validate_number(int argc, char **argv)
 	if (ERROR == no_dupulicate(stack_a))
 	{
 		free_stack(stack_a, argc);
-		exit_with_number(NO_DUPLICATE);
+		print_error_and_exit(NO_DUPLICATE);
 	}
 	return (stack_a);
 }

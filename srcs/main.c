@@ -41,30 +41,46 @@ int main(int argc, char **argv) // hve to be much simpler/ get argv /sort/print 
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	t_sort	*sort;
-	//char	**record;
+	char	**record;
 	
 	if (argc < 2)
 		return (0);
 	stack_a = validate_number(argc - 1, argv + 1);
-	stack_b = init_stack(0, NULL);
 	
 	t_stack	*tmp = stack_a;
+	printf("argv: ");
 	for (int i = 0; i < argc - 1 ; i++)
 	{
 		tmp = tmp->next;
-		printf("[%d]: %d\n", i + 1, tmp->val);
+		printf(" %d", tmp->val);
+//		printf("[%d]: %d\n", i + 1, tmp->val);
 	}
-	free_stack(stack_a, argc - 1);
-	free_stack(stack_b, 0);
+	printf("\n");
+
+
+
 	sort = pre_sort(stack_a);
 
+	for (int i = 0; i < argc - 1 ; i++)
+		printf("[%d]: %d\n", i + 1, sort->array[i]);
+	
 
-/*	record = record_array(stack_a->val * 12);
-	if (!sort || !record || is_sorted(stack_a))
+
+	stack_b = init_stack(0, NULL);
+
+	
+
+
+	record = record_array(stack_a->val * 12);
+/*
+ * if (!sort || !record || is_sorted(stack_a))
 		shutdown(MAIN_SORT_ERROR);
 	size_branch(stack_a, stack_b, sort);
 	player(*record);
 */
+	free_all(stack_a, stack_b, sort, NULL);
+	//	free_stack(stack_a, argc - 1);
+//	free_stack(stack_b, 0);
 
 	return (0);
 }
