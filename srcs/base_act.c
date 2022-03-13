@@ -50,8 +50,9 @@ void	swap(t_stack *stack, int ab)
 	else if (ab == 2)
 		recorder(NULL, 5);
 }
+*/
 
-void	r_rot(t_stack *stack, int ab)
+void	rot_down(t_stack *stack, int ab) //r_rot
 {
 	t_stack *head;
 	t_stack *tmp1;
@@ -74,7 +75,7 @@ void	r_rot(t_stack *stack, int ab)
 		recorder(NULL, 7);
 }
 
-void	rot(t_stack *stack, int ab)
+void	rot_up(t_stack *stack, int ab) //rot
 {
 	t_stack	*head;
 	t_stack	*tmp1;
@@ -96,4 +97,3 @@ void	rot(t_stack *stack, int ab)
 	else if (ab == 2)
 		recorder(NULL, 9);
 }
-*/

@@ -10,7 +10,7 @@ void	case_two(t_stack *stack)
 	if (a > b)
 		swap(stack, 1);
 }
-/*
+
 void	case_three(t_stack *stack)
 {
 	int	a;
@@ -20,24 +20,24 @@ void	case_three(t_stack *stack)
 	a = stack->next->val;
 	b = stack->next->next->val;
 	c = stack->next->next->next->val;
-	if (b < a && a < c)
+	if (b < a && a < c) //case 1
 		swap(stack, 1);
-	else if (a > b && b > c)
+	else if (a > b && b > c) //case 2
 	{
 		swap(stack, 1);
-		r_rot(stack, 1);
+		rot_down(stack, 1);
 	}
-	else if (a > c && c > b)
-		rot(stack, 1);
-	else if (a < c && c < b)
+	else if (a > c && c > b) //case 3
+		rot_up(stack, 1);
+	else if (a < c && c < b) // case 4
 	{
 		swap(stack, 1);
-		rot(stack, 1);
+		rot_up(stack, 1);
 	}
-	else if (c < a && a < b)
-		r_rot(stack, 1);
+	else if (c < a && a < b) // case 5
+		rot_down(stack, 1);
 }
-
+/*
 void	case_ngt_six(t_stack *stack1, t_stack *stack2)
 {
 	size_t	size;

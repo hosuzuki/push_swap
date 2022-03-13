@@ -37,9 +37,9 @@ static int pick_algo(t_stack *stack_a, t_stack *stack_b, t_sort *sort)
 		return (SORTED);
 	if (size == 2)
 		case_two(stack_a);
-/*	else if (size == 3)
+	else if (size == 3)
 		case_three(stack_a);
-	else if (size <= 6)
+/*	else if (size <= 6)
 		case_four_to_six(stack_a, stack_b);
 	else
 		case_from_seven(stack_a, stack_b, sort);
