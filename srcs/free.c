@@ -17,22 +17,23 @@ void	free_stack(t_stack *stack, int count)
 	free(head);
 }
 
-static void	free_stackab(t_stack *stack1, t_stack *stack2)
+void	free_sort(t_sort *sort)
+{
+	free(sort->array);
+	free(sort);
+}
+
+void	free_all(t_stack *stack1, t_stack *stack2, t_sort *sort, char *record)
 {
 	if (stack1)
 		free_stack(stack1, stack1->val);
 	if (stack2)
 		free_stack(stack2, stack2->val);
+	if (sort)
+		free_sort(sort);
+	if (record)
+		free(record);
 }
 
-void	free_all(t_stack *stack1, t_stack *stack2, t_sort *sort, char *record)
-{
-	free(record);
-	if (sort)
-	{
-		free(sort->array);
-		free(sort);
-	}
-	free_stackab(stack1, stack2);
-}
+// what about ret?? is it freed?
 

@@ -71,7 +71,7 @@ int main(int argc, char **argv) // hve to be much simpler/ get argv /sort/print 
 	
 
 
-	record = record_array(stack_a->val * 12);
+	record = record_array(stack_a->val * 20, stack_a, sort);
 /*
  * if (!sort || !record || is_sorted(stack_a))
 		shutdown(MAIN_SORT_ERROR);

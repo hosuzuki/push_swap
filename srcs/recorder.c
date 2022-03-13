@@ -1,29 +1,14 @@
 #include <push_swap.h>
 
-char	**record_array(size_t size)
-{
-	char		*record;
-	char		**ret;
-
-	record = (char *)malloc(sizeof(char) * size + 1);
-	ret = (char **)malloc(sizeof(char *));
-	if (!record || !ret) // Need free record ore ret?
-		return (NULL);
-	ft_memset(record, 1, size);
-	record[size] = '\0';
-	*ret = record;
-	vals_storage(NULL, NULL, NULL, ret);
-	recorder(ret, 0);
-	return (ret);
-}
-
 static char	*sham_realloc(char **reco, size_t size)
 {
 	char	*tmp;
 
 	tmp = (char *)malloc(sizeof(char) * (size * 2) + 1);
 	if (!tmp)
-		shutdown(SHAM_ERROR);
+	{
+	
+	}
 	ft_memset(tmp, 1, size * 2);
 	tmp[size * 2] = '\0';
 	ft_memcpy(tmp, *reco, size);
@@ -31,67 +16,72 @@ static char	*sham_realloc(char **reco, size_t size)
 	return (tmp);
 }
 
-void	recorder(char **record, int act)
+void	recorder(char **rec, int act)
 {
-	static char		**reco;
+	static char		**recording;
 	static size_t	size;
 	static size_t	index;
 
-	if(record && act == 0)
+	if(rec && act == 0)
 	{
-		reco = record;
-		size = ft_strlen(*record);
+		recording = rec;
+		size = ft_strlen(*rec);
 		index = 0;
 	}
-	else if (record == NULL)
+	else if (rec == NULL)
 	{
 		if (size == index)
 		{
-			*reco = sham_realloc(reco, size);
+			*recording = sham_realloc(reco, size);
 			size = size * 2;
 		}
 		(*reco)[index++] = act;
 	}
 }
 
-static void	print_command(char c)
+static char	*allocate_record(size_t size, t_stack *stack_a, t_sort *sort, char **rec)
 {
-	if (c == 2)
-		write(1, "sa\n", 3);
-	else if (c == 3)
-		write(1, "sb\n", 3);
-	else if (c == 4)
-		write(1, "pb\n", 3);
-	else if (c == 5)
-		write(1, "pa\n", 3);
-	else if (c == 6)
-		write(1, "rra\n", 4);
-	else if (c == 7)
-		write(1, "rrb\n", 4);
-	else if (c == 8)
-		write(1, "ra\n", 3);
-	else if (c == 9)
-		write(1, "rb\n", 3);
-	else if (c == 10)
-		write(1, "rr\n", 3);
-	else if (c == 11)
-		write(1, "rrr\n", 4);
+	char	*record;
+
+//	record = (char *)malloc(sizeof(char) * size + 1);
+	record = (char *)ft_calloc(sizeof(char) * size + 1);
+	if (!record)
+	{
+		free_stack(stack_a);
+		free_sort(sort);
+		free(rec);
+		exit_with_status(ALLOC_RECORD);
+	}
+	return (record);
 }
 
-	void	player(char *record)
+static char	*allocate_rec(size_t size, t_stack *stack_a, t_sort *sort)
 {
-	size_t	i;
+	char		**rec;
 
-	i = 0;
-	optimizer(record);
-	while (record[i])
+	rec = (char **)malloc(sizeof(char *));
+	if (!rec)
 	{
-		while (record[i] == 1)
-			i++;
-		if (!record[i])
-			break ;
-		print_command(record[i]);
-		i++;
+		free_stack(stack_a);
+		free_sort(sort);
+		exit_with_status(ALLOC_REC);
 	}
-	vals_storage(NULL, NULL, NULL, NULL);
+	return (rec);
+}
+
+//// can i just use free_all?
+
+char	**record_array(size_t size, t_stack *stack_a, t_sort *sort)
+{
+	char		**rec;
+	char		*record;
+
+	rec = allocate_rec(size, stack_a, sort);
+	record = allocate_record(size, stack_a, sort, rec);
+//	ft_memset(record, 1, size);
+	record[size] = '\0';
+	*rec = record;
+//	vals_storage(NULL, NULL, NULL, rec);
+	recorder(rec, 0);
+	return (rec);
 }
