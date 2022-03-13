@@ -40,6 +40,8 @@ int main(int argc, char **argv) // hve to be much simpler/ get argv /sort/print 
 	
 	if (argc < 2)
 		return (0);
+	validate_number( 
+		
 	if (!is_digit_str(argc - 1, argv + 1))
 	{
 		write(2, "Error\n", 6);
