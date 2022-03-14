@@ -55,14 +55,26 @@ enum error_handling
 };
 
 # define NOT_SORTED -2
-# define SORTED -1
+# define ALREADY_SORTED -1
+
+# define SA 2
+# define SB 3
+# define PB 4 // change?
+# define PA 5
+# define RRA 6
+# define RRB 7
+# define RA 8
+# define RB 9
+# define RR 10
+# define RRR 11
+# define SS 12 // change this to 4
 
 
 // main.c
 int		is_sorted(t_stack *stack);
 
-//validate_number.c
-t_stack	*validate_number(int argc, char **argv);
+//validate_argv.c
+t_stack	*validate_argv(int argc, char **argv);
 
 //init_stack.c
 t_stack	*init_stack(int args, char *argv[]);
@@ -81,26 +93,42 @@ t_sort	*pre_sort(t_stack *stack);
 
 // recorder.c
 char	**record_array(size_t size, t_stack *stack_a, t_sort *sort);
-void	recorder(char **record, int act);
+void	recorder(char **record, int cmd);
 
-// small_case.c
+// cases_of_algo.c
 void	case_two(t_stack *stack);
 void	case_three(t_stack *stack);
-void	case_ngt_six(t_stack *stack1, t_stack *stack2);
+void	case_four_to_six(t_stack *stack1, t_stack *stack2);
+void	case_seven_or_more(t_stack *stack_a, t_stack *stack_b, t_sort *sort);
 
-// base_act.c
+// operations.c
 void	swap(t_stack *stack, int ab);
 void	push(t_stack *stack1, t_stack *stack2, int ab);
 void	rot_down(t_stack *stack, int ab);
 void	rot_up(t_stack *stack, int ab);
 
+// search_val.c
+void	set_min(t_stack *stack, int ab);
+void	set_max(t_stack *stack, int ab);
+//void	renumber_index(t_stack *stack); // can be static?
 
+// sort_stacks.c
+void	sort_stacks(t_stacks *stacks, size_t l, size_t r, int first);
 
+// sort_stack_b.c
+void	sort_stack_b(t_stacks *stacks, size_t l, size_t r);
 
+// sort_stack_b_utils.c
+int		push_with_count(t_stacks *stacks);
+int		rot_up_with_count(t_stack *stack, int ab);
+void	push_all_to_a(t_stacks *stacks, size_t l, size_t r);
 
+// optimize_cmds.c
+void	optimize_cmds(char *record);
 
+	// print_cmds.c
+void	print_cmds(char *record);
 
-void	player(char *record);
 
 
 
@@ -108,27 +136,6 @@ void	player(char *record);
 // vals.c
 void	vals_storage(t_stack *stack, t_stacks *stacks,
 			t_sort *sort, char **record);
-
-// init_node.c
-void	re_index(t_stack *stack);
-
-// many_args_atob.c
-void	atob(t_stacks *stacks, size_t l, size_t r, int first);
-
-// many_args_btoa.c
-void	btoa(t_stacks *stacks, size_t l, size_t r);
-
-// many_args_btoa2.c
-int		btoa_push(t_stacks *stacks);
-int		btoa_rot(t_stack *stack, int ab);
-void	btoa_pushall(t_stacks *stacks, size_t l, size_t r);
-
-// optimizer.c
-void	optimizer(char *record);
-
-// search_val.c
-void	set_min(t_stack *stack, int ab);
-void	set_max(t_stack *stack, int ab);
 
 // double_act.c
 void	ss(t_stack *stack_a, t_stack *stack_b);
