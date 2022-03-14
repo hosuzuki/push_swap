@@ -1,6 +1,6 @@
 #include <push_swap.h>
 
-static char	*expand_record(char **recording, size_t size)
+static char	*expand_record(char **cmd_stock, size_t size)
 {
 	char	*tmp;
 
@@ -11,20 +11,21 @@ static char	*expand_record(char **recording, size_t size)
 	}
 //	ft_memset(tmp, 1, size * 2);
 	tmp[size * 2] = '\0';
-	ft_memcpy(tmp, *recording, size);
-	free(*recording);
+	ft_memcpy(tmp, *cmd_stock, size);
+	free(*cmd_stock);
+	cmd_stock = NULL;
 	return (tmp);
 }
 
 void	recorder(char **rec, int cmd) //???
 {
-	static char		**recording;
+	static char		**cmd_stock;
 	static size_t	size;
 	static size_t	i;
 
 	if(rec && cmd == 0)
 	{
-		recording = rec;
+		cmd_stock = rec;
 		size = ft_strlen(*rec);
 		i = 0;
 	}
@@ -32,10 +33,10 @@ void	recorder(char **rec, int cmd) //???
 	{
 		if (size == i)
 		{
-			*recording = expand_record(recording, size);
+			*cmd_stock = expand_record(cmd_stock, size);
 			size *= 2;
 		}
-		(*recording)[i++] = cmd;
+		(*cmd_stock)[i++] = cmd;
 	}
 }
 
@@ -78,8 +79,8 @@ char	**record_array(size_t size, t_stack *stack_a, t_sort *sort)
 
 	rec = allocate_rec(stack_a, sort);
 	record = allocate_record(size, stack_a, sort, rec);
-//	ft_memset(record, 1, size);
-	record[size] = '\0';
+	ft_memset(record, 1, size);
+	record[size] = '\0'; // needed?
 	*rec = record;
 //	vals_storage(NULL, NULL, NULL, rec);
 	recorder(rec, 0);

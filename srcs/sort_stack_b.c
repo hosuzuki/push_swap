@@ -61,6 +61,7 @@ static void	divide(t_stacks *stacks, size_t p[], int c)
 		{
 			p_count += push_with_count(stacks);
 			pr_count += rot_up_with_count(stacks->a, 1);
+			c--;
 		}
 		else
 			r_count += rot_up_with_count(stacks->b, 2);
@@ -71,9 +72,10 @@ static void	divide(t_stacks *stacks, size_t p[], int c)
 void sort_stack_b(t_stacks *stacks, size_t l, size_t r)
 {
 	int		count;
-	size_t	*p;
+//	size_t	*p;
+	size_t p[2];
 
-	p = NULL;
+//	p = NULL;
 	p[0] = (l + r) /2;
 	p[1] = (p[0] + r) /2;
 	count = count_more_than_pivot(stacks->b, stacks->sort->array[p[0]],

@@ -67,10 +67,12 @@ static void	move_small_number_to_b(t_stacks *stacks, size_t *p, int count, int f
 void	sort_stacks(t_stacks *stacks, size_t l, size_t r, int first)
 {
 	int		count;
-//	size_t	p[2];
-	size_t	*p;
+	size_t	p[2];
+//	size_t	*p;
+//	size_t p1;
+//	size_t p2;
 
-	p = NULL;
+//	p = NULL;
 	if (r - l <= 2)
 	{
 		if (stacks->a->val == 3)
