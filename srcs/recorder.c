@@ -16,13 +16,13 @@ static char	*expand_record(char **recording, size_t size)
 	return (tmp);
 }
 
-void	recorder(char **rec, int act) //???
+void	recorder(char **rec, int cmd) //???
 {
 	static char		**recording;
 	static size_t	size;
 	static size_t	i;
 
-	if(rec && act == 0)
+	if(rec && cmd == 0)
 	{
 		recording = rec;
 		size = ft_strlen(*rec);
@@ -35,7 +35,7 @@ void	recorder(char **rec, int act) //???
 			*recording = expand_record(recording, size);
 			size *= 2;
 		}
-		(*recording)[i++] = act;
+		(*recording)[i++] = cmd;
 	}
 }
 

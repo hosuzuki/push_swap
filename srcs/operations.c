@@ -18,12 +18,11 @@ void	swap(t_stack *stack, int ab)
 	tmp1->prev = tmp2;
 	tmp2->next = tmp1;
 	if (ab == 1)
-		recorder(NULL, 2);
+		recorder(NULL, SA);
 	else if (ab == 2)
-		recorder(NULL, 3);
+		recorder(NULL, SB);
 }
 
-/*
  void	push(t_stack *stack1, t_stack *stack2, int ab)
 {
 	t_stack *head1;
@@ -46,11 +45,10 @@ void	swap(t_stack *stack, int ab)
 	head1->val--;
 	head2->val++;
 	if (ab == 1)
-		recorder(NULL, 4);
+		recorder(NULL, PB);
 	else if (ab == 2)
-		recorder(NULL, 5);
+		recorder(NULL, PA);
 }
-*/
 
 void	rot_down(t_stack *stack, int ab) //r_rot
 {
@@ -70,9 +68,9 @@ void	rot_down(t_stack *stack, int ab) //r_rot
 	tmp2->prev = head;
 	tmp2->next = tmp1;
 	if (ab == 1)
-		recorder(NULL, 6);
+		recorder(NULL, RRA);
 	else if (ab == 2)
-		recorder(NULL, 7);
+		recorder(NULL, RRB);
 }
 
 void	rot_up(t_stack *stack, int ab) //rot
@@ -93,7 +91,7 @@ void	rot_up(t_stack *stack, int ab) //rot
 	tmp1->next = head;
 	tmp2->next = tmp1;
 	if (ab == 1)
-		recorder(NULL, 8);
+		recorder(NULL, RA);
 	else if (ab == 2)
-		recorder(NULL, 9);
+		recorder(NULL, RB);
 }

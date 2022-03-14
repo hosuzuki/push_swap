@@ -46,7 +46,7 @@ static void	str_is_all_digit(int argc, char **argv)
 //	return (1);
 }
 
-t_stack	*validate_number(int argc, char **argv)
+t_stack	*validate_argv(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	

@@ -22,12 +22,12 @@ void	case_three(t_stack *stack)
 	c = stack->next->next->next->val;
 	if (b < a && a < c) //case 1
 		swap(stack, 1);
-	else if (a > b && b > c) //case 2
+	else if (c < b && b < a) //case 2
 	{
 		swap(stack, 1);
 		rot_down(stack, 1);
 	}
-	else if (a > c && c > b) //case 3
+	else if (b < c && c < a) //case 3
 		rot_up(stack, 1);
 	else if (a < c && c < b) // case 4
 	{
@@ -37,8 +37,8 @@ void	case_three(t_stack *stack)
 	else if (c < a && a < b) // case 5
 		rot_down(stack, 1);
 }
-/*
-void	case_ngt_six(t_stack *stack1, t_stack *stack2)
+
+void	case_four_to_six(t_stack *stack1, t_stack *stack2)
 {
 	size_t	size;
 	size_t	count;
@@ -56,4 +56,16 @@ void	case_ngt_six(t_stack *stack1, t_stack *stack2)
 		push(stack2, stack1, 2);
 }
 
-*/
+void	case_seven_or_more(t_stack *stack_a, t_stack *stack_b, t_sort *sort)
+{
+	t_stacks *stacks;
+
+	stacks = (t_stacks *)malloc(sizeof(t_stacks));
+	if (!stacks)
+		exit (1); //has to be fixed
+//	vals_storage(NULL, stacks, NULL, NULL);
+	stacks->a = stack_a;
+	stacks->b = stack_b;
+	stacks->sort = sort;
+	sort_stacks(stacks, 0, sort->size - 1, 1);
+}
