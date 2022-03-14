@@ -11,18 +11,13 @@ typedef struct s_stack
 	struct s_stack	*next;
 } t_stack;
 
-typedef struct s_sort
-{
-	int		*array;
-	size_t	size;
-} t_sort;
-
-typedef struct s_stacks
+typedef struct s_storage
 {
 	t_stack	*a;
 	t_stack	*b;
-	t_sort	*sort;
-}	t_stacks;
+	int	*sorted;
+	char	*cmds;
+}	t_storage;
 
 enum error_handling
 {
@@ -71,7 +66,7 @@ enum error_handling
 
 
 // main.c
-int		is_sorted(t_stack *stack);
+//int		is_sorted(t_stack *stack);
 
 //validate_argv.c
 t_stack	*validate_argv(int argc, char **argv);
