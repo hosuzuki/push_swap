@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	is_sorted(t_stack *stack)
+static int	scan_sort_order(t_stack *stack)
 {
 	stack = stack->next;
 	while (stack->next->index != 0)
@@ -17,7 +17,7 @@ static int pick_algo_and_sort(t_stack *stack_a, t_stack *stack_b, t_sort *sort)
 	size_t	size;
 	
 	size = stack_a->val;
-	if (ALREADY_SORTED == is_sorted(stack_a))
+	if (ALREADY_SORTED == scan_sort_order(stack_a))
 		return (ALREADY_SORTED);
 	if (size == 2)
 		case_two(stack_a);
@@ -72,18 +72,43 @@ static void print_stack(t_stack *stack_a, t_stack *stack_b)
 		printf("%d ", stack_b->val);
 	}
 }
+
+
 */
 
-int main(int argc, char **argv)
+static void init_storage(t_storage *storage)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	t_sort	*sort;
-	char	**record;
+	t_sort	*sorted;
+	char	*cmds;
+
+	stack_a = init_stack_a();
+	stack_b = NULL;
+	sorted = NULL;
+	cmds = NULL;
+	storage->a = stack_a;
+	storage->b = stack_b;
+	storage->sorted = sorted;
+	storage->cmds = cmds;
+}
+
+int main(int argc, char **argv)
+{
+	t_storage	*storage;
+	//	t_stack	*stack_a;
+//	t_stack	*stack_b;
+//	t_sort	*sort;
+//	char	*record;
 	
 	if (argc < 2)
 		return (0);
-	stack_a = validate_argv(argc - 1, argv + 1);
+	storage = (t_storage *)malloc(sizeof(t_storage));
+	if (!storage)
+		return (0);
+	init_storage(storage);
+	
+	storage->a = validate_argv(argc - 1, argv + 1);
 //	print_argv(stack_a, argc); //has to be deleted
 	sort = pre_sort(stack_a);
 //	print_sort(argc, sort); // has to be deleted
