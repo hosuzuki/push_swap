@@ -76,14 +76,18 @@ static void print_stack(t_stack *stack_a, t_stack *stack_b)
 
 */
 
-static void init_storage(t_storage *storage)
+static t_storage	*init_storage(int argc, char **argv)
 {
+	t_storage	*storage;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	t_sort	*sorted;
 	char	*cmds;
 
-	stack_a = init_stack_a();
+	storage = (t_storage *)malloc(sizeof(t_storage));
+	if (!storage)
+		exit (INIT_STORAGE);
+	stack_a = NULL;
 	stack_b = NULL;
 	sorted = NULL;
 	cmds = NULL;
@@ -91,29 +95,24 @@ static void init_storage(t_storage *storage)
 	storage->b = stack_b;
 	storage->sorted = sorted;
 	storage->cmds = cmds;
+	return (storage);
 }
 
 int main(int argc, char **argv)
 {
 	t_storage	*storage;
-	//	t_stack	*stack_a;
-//	t_stack	*stack_b;
-//	t_sort	*sort;
-//	char	*record;
-	
+
 	if (argc < 2)
-		return (0);
-	storage = (t_storage *)malloc(sizeof(t_storage));
-	if (!storage)
-		return (0);
-	init_storage(storage);
-	
-	storage->a = validate_argv(argc - 1, argv + 1);
+		return (MAIN1);
+	validate_argv(argc, argv);
+	storage = init_storage(argc, argv);
+	storage->a = init_stack(argc - 1, argv + 1, storage);
+	storage->b = init_stack(0, NULL, storage);
+	scan_dupulicates(storage->a, storage)
 //	print_argv(stack_a, argc); //has to be deleted
-	sort = pre_sort(stack_a);
+	storage->sorted = init_sorted_array(storage->a, storage);
 //	print_sort(argc, sort); // has to be deleted
-	record = record_array(stack_a->val * 20, stack_a, sort);
-	stack_b = init_stack(0, NULL);
+	storage->cmds = init_cmds_array(stack_a->val * 20, stack_a, sort);
 	if (ALREADY_SORTED == pick_algo_and_sort(stack_a, stack_b, sort))
 	{
 		free_all(stack_a, stack_b, sort, *record); // check rec
