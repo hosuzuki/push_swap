@@ -1,9 +1,9 @@
 NAME = push_swap
 BONUS_NAME = checker
 SRC = srcs/main.c \
+			srcs/init_stack.c \
 			srcs/validate_argv.c \
 			srcs/exit.c \
-			srcs/init_stack.c \
 			srcs/free.c \
 			srcs/pre_sort.c \
 			srcs/recorder.c \
