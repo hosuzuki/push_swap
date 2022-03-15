@@ -42,7 +42,7 @@ static void	move_small_number_to_b(t_stacks *stacks, size_t *p, int count, int f
 	// count = how many numbers are below pivot
 	while (0 < count)
 	{
-		if (stacks->a->next->val <= stacks->sort->array[p[0]]) //val <=  1/4 part
+		if (stacks->a->next->val <= stacks->sort->array[x]) //val <=  1/4 part
 		{
 			if (first == 1)// ???
 				r_count = push_rot_up(stacks, r_count);
@@ -50,7 +50,7 @@ static void	move_small_number_to_b(t_stacks *stacks, size_t *p, int count, int f
 				push(stacks->a, stacks->b, 1);
 			count--;
 		}
-		else if (stacks->a->next->val <= stacks->sort->array[p[1]]) // val <=1/2
+		else if (stacks->a->next->val <= stacks->sort->array[y]) // val <=1/2
 		{
 			if (first == 0) // ??
 				r_count = push_rot_up(stacks, r_count);
@@ -58,35 +58,32 @@ static void	move_small_number_to_b(t_stacks *stacks, size_t *p, int count, int f
 				push(stacks->a, stacks->b, 1);
 			count--;
 		}
-		else if (stacks->a->next->val > stacks->sort->array[p[0]]) //val > 1/4  this have to p[1] or could be just else
+		else if (stacks->a->next->val > stacks->sort->array[x]) //val > 1/4  this have to y or could be just else
 			rot_up(stacks->a, 1);
 	}
 	replace_atob(stacks, r_count, first);//??
 }
 
-void	sort_stacks(t_stacks *stacks, size_t l, size_t r, int first)
+void	sort_stacks(t_storage *storage, size_t l, size_t r, int first)
 {
 	int		count;
-	size_t	p[2];
-//	size_t	*p;
-//	size_t p1;
-//	size_t p2;
+	size_t	x;
+	size_t	y;
 
-//	p = NULL;
 	if (r - l <= 2)
 	{
-		if (stacks->a->val == 3)
-			case_three(stacks->a);
-		else if (stacks->a->val == 2)
-			case_two(stacks->a);
+		if (storage->a->val == 3)
+			case_three(storage->a);
+		else if (storage->a->val == 2)
+			case_two(storage->a);
 		return ;
 	}
-	p[1] = (l + r) / 2; //1/2
-	p[0] = (l + p[1]) / 2; // 1 / 4
-	count = count_pivot_or_less(stacks->a, stacks->sort->array[p[1]],
-			stacks->sort->array[l], stacks->sort->array[r]);
+	y = (l + r) / 2; //1/2
+	x = (l + y) / 2; // 1 / 4
+	count = count_pivot_or_less(storage->a, storage->sorted[y],
+			storage->sorted[l], storage->sorted[r]);
 	move_small_number_to_b(stacks, p, count, first);// move small number to b
-	sort_stacks(stacks, p[1] + 1, r, 0); // 1/2 ~ right
-	sort_stack_b(stacks, p[0] + 1, p[1]); //1/4 + 1~  1/2
-	sort_stack_b(stacks, l, p[0]); // 0 ~ 1/4
+	sort_stacks(stacks, y + 1, r, 0); // 1/2 ~ right
+	sort_stack_b(stacks, x + 1, y); //1/4 + 1~  1/2
+	sort_stack_b(stacks, l, x); // 0 ~ 1/4
 }

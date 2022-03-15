@@ -10,9 +10,5 @@ char	*init_cmds_array(t_stack *a, t_storage *storage)
 	if (!cmds)
 		free_all_and_exit(storage, INIT_CMDS_ARRAY);
 //	ft_memset(record, 1, size);
-//	record[size] = '\0'; // needed?
-//	*rec = record;
-//	vals_storage(NULL, NULL, NULL, rec);
-//	recorder(rec, 0);
 	return (cmds);
 }
