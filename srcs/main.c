@@ -1,79 +1,53 @@
 #include "push_swap.h"
 
-static int	scan_sort_order(t_stack *a)
+static void	scan_dupulicates(t_stack *a, t_storage *storage)
 {
+	t_stack *tmp;
+
 	a = a->next;
 	while (a->next->index != 0)
 	{
-		if (a->val > a->next->val)
-			return (NOT_SORTED);
+		tmp = a->next;
+		while (tmp->index != 0)
+		{
+			if (a->val == tmp->val)
+			{
+				write(2, "Error\n", 6);
+				free_all_and_exit(storage, SCAN_DUPLICATES);
+			}
+			tmp = tmp->next;
+		}
 		a = a->next;
 	}
-	return (ALREADY_SORTED);
 }
 
-static int select_algo(t_stack *a, t_stack *b, t_storage *storage)
+static void	validate_argv(int argc, char **argv)
 {
-	size_t	size;
-	
-	size = a->val;
-	if (ALREADY_SORTED == scan_sort_order(a))
-		return (ALREADY_SORTED);
-	if (size == 2)
-		case_two(a);
-	else if (size == 3)
-		case_three(a);
-	else if (size <= 6)
-		case_four_to_six(a, b);
-	else
-		sort_stacks(storage, 0, storage->a>val - 1, 1);
-	return (CONTINUE);
-}
+	int		i;
+	int		j;
+	char	*str;
 
-/*
-# include <stdio.h> // this have be away
-
-static void print_argv(t_stack *stack_a, int argc) // has to be deleted
-{
-	t_stack	*tmp = stack_a;
-	printf("argv: ");
-	for (int i = 0; i < argc - 1 ; i++)
+	j = 0;
+	while (j < argc)
 	{
-		tmp = tmp->next;
-		printf(" %d", tmp->val);
-//		printf("[%d]: %d\n", i + 1, tmp->val);
-	}
-	printf("\n");
-}
-
-static void print_sort(int argc, t_sort *sort)
-{
-	printf("sort\n");
-	for (int i = 0; i < argc - 1 ; i++)
-		printf("[%d]: %d\n", i + 1, sort->array[i]);
-}
-
-static void print_stack(t_stack *stack_a, t_stack *stack_b)
-{
-	printf("stack_a\n");
-	int sum = stack_a->val;
-	for (int i = 0; i < sum; i++)
-	{
-		stack_a = stack_a->next;
-		printf("%d ", stack_a->val);
-	}
-	printf("\nstack_b\n");
-	sum = stack_b->val;
-	for (int i = 0; i < sum; i++)
-	{
-		stack_b = stack_b->next;
-		printf("%d ", stack_b->val);
+		i = 0;
+		str = argv[j];
+		if (str[0] == '\0')
+			exit (VALIDATE_ARG1);
+		if (str[0] == '-' && str[1] != '\0')
+			i++;
+		while (str[i])
+		{
+			if (!ft_isdigit(str[i]))
+			{
+				write(2, "Error\n", 6);
+				exit (VALIDATE_ARG2);
+			}
+			i++;
+		}
+		j++;
 	}
 }
-
-
-*/
-
 static t_storage	*init_storage(int argc, char **argv)
 {
 	t_storage	*storage;
@@ -93,6 +67,8 @@ static t_storage	*init_storage(int argc, char **argv)
 	storage->b = stack_b;
 	storage->sorted = sorted;
 	storage->cmds = cmds;
+	storage->cmds_len = 0;
+	storage->first_flag = ON;
 	return (storage);
 }
 
@@ -107,13 +83,10 @@ int main(int argc, char **argv)
 	storage->a = init_stack(argc - 1, argv + 1, storage);
 	storage->b = init_stack(0, NULL, storage);
 	scan_dupulicates(storage->a, storage)
-//	print_argv(stack_a, argc); //has to be deleted
 	storage->sorted = init_sorted_array(storage->a, storage);
-//	print_sort(argc, sort); // has to be deleted
-	storage->cmds = init_cmds_array(storage->a, sort);
+	storage->cmds = init_cmds_array(storage->a, storage);
 	if (ALREADY_SORTED == select_algo(storage->a, storage->b, storage)
 		free_all_and_exit(storage, MAIN2);
-		//	print_stack(stack_a, stack_b); // has to be deleted.
 	optimize_cmds(*record);
 	print_cmds(*record);
 	free_all_and_exit(storage, 0);

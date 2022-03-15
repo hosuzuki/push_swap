@@ -1,74 +1,75 @@
 #include "push_swap.h"
 
-static int	count_pivot_or_less(t_stack *stack, int pv, int lv, int rv)
+static void	reverse_rotate_b(t_storage *storage, int r_count)
+{
+	while ( 0 < r_count && storage->first_flag == OFF)
+	{
+		rot_down(storage->b, 2);
+		r_count--;
+	}
+}
+
+static int	push_and_rot_up_b(t_storage *storage)
+{
+	push(storage->a, storage->b, 1);
+	rot_up(storage->b, 2);
+	return (1);
+}
+
+static void	push_small_to_b(t_storage *storage, size_t x, size_t y, int count)
+{
+	int	r_count;
+
+	r_count = 0; 
+	while (0 < count)
+	{
+		if (storage->a->next->val <= storage->sorted[x]) //val <=  1/4 part
+		{
+			if (storage->first_flag == ON)
+				r_count = push_and_rot_up_b(storage, r_count);
+			else
+				push(storage->a, storage->b, 1);
+			count--;
+		}
+		else if (storages->a->next->val <= storage->sorted[y]) // val <=1/2
+		{
+			if (storage->first_flag == OFF)
+				r_count += push_and_rot_up_b(storage, r_count);
+			else
+				push(storage->a, storage->b, 1);
+			count--;
+		}
+//		else if (storage->a->next->val > storage->sorted[x]) //val > 1/4  this have to y or could be just else
+//		else if (storage->a->next->val > storage->sorted[y])
+		else
+			rot_up(storage->a, 1);
+	}
+	reverse_rotate_b(storage, r_count);
+}
+
+static int	count_pivot_or_less(t_stack *a, int pv, int lv, int rv)
 {
 	t_stack	*head;
 	int		count;
 
 	count = 0;
-	head = stack;
-	stack = stack->next;
-	while (stack != head && lv <= stack->val && stack->val <= rv) // does lv and rv needed?
+	head = a;
+	a = a->next;
+//	while (a != head && lv <= a->val && a->val <= rv) // does lv and rv needed?
+	(void)lv;// delete
+	(void)rv;//delete
+	while (a != head)
 	{
-		if (stack->val <= pv)
+		if (a->val <= pv)
 			count++;
-		stack = stack->next;
+		a = a->next;
 	}
 	return (count);
 }
 
-static void	replace_atob(t_stacks *stacks, int r_count, int first)
-{
-	while ( r_count > 0 && first == 0)
-	{
-		rot_down(stacks->b, 2);
-		r_count--;
-	}
-}
-
-static int	push_rot_up(t_stacks *stacks, int r_count)
-{
-	push(stacks->a, stacks->b, 1);
-	rot_up(stacks->b, 2); // why?
-	r_count++;
-	return (r_count);
-}
-
-static void	move_small_number_to_b(t_stacks *stacks, size_t *p, int count, int first)
-{
-	int	r_count;
-
-	r_count = 0; 
-	// count = how many numbers are below pivot
-	while (0 < count)
-	{
-		if (stacks->a->next->val <= stacks->sort->array[x]) //val <=  1/4 part
-		{
-			if (first == 1)// ???
-				r_count = push_rot_up(stacks, r_count);
-			else
-				push(stacks->a, stacks->b, 1);
-			count--;
-		}
-		else if (stacks->a->next->val <= stacks->sort->array[y]) // val <=1/2
-		{
-			if (first == 0) // ??
-				r_count = push_rot_up(stacks, r_count);
-			else
-				push(stacks->a, stacks->b, 1);
-			count--;
-		}
-		else if (stacks->a->next->val > stacks->sort->array[x]) //val > 1/4  this have to y or could be just else
-			rot_up(stacks->a, 1);
-	}
-	replace_atob(stacks, r_count, first);//??
-}
-
-void	sort_stacks(t_storage *storage, size_t l, size_t r, int first)
+void	sort_stacks(t_storage *storage, size_t l, size_t r)
 {
 	int		count;
-	size_t	x;
-	size_t	y;
 
 	if (r - l <= 2)
 	{
@@ -81,9 +82,10 @@ void	sort_stacks(t_storage *storage, size_t l, size_t r, int first)
 	y = (l + r) / 2; //1/2
 	x = (l + y) / 2; // 1 / 4
 	count = count_pivot_or_less(storage->a, storage->sorted[y],
-			storage->sorted[l], storage->sorted[r]);
-	move_small_number_to_b(stacks, p, count, first);// move small number to b
-	sort_stacks(stacks, y + 1, r, 0); // 1/2 ~ right
-	sort_stack_b(stacks, x + 1, y); //1/4 + 1~  1/2
-	sort_stack_b(stacks, l, x); // 0 ~ 1/4
+			storage->sorted[l], storage->sorted[r]); // change?
+	push_small_to_b(storage, x, y, count);// move small number to b
+	storage->first_flag = OFF;
+	sort_stacks(storage, y + 1, r); // 1/2 ~ right
+	sort_stack_b(storage, x + 1, y); //1/4 + 1~  1/2
+	sort_stack_b(storage, l, x); // 0 ~ 1/4
 }

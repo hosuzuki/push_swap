@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	case_two(t_stack *stack)
+static void	case_two(t_stack *stack)
 {
 	int	a;
 	int	b;
@@ -11,7 +11,7 @@ void	case_two(t_stack *stack)
 		swap(stack, 1);
 }
 
-void	case_three(t_stack *stack)
+static void	case_three(t_stack *stack)
 {
 	int	a;
 	int	b;
@@ -38,7 +38,7 @@ void	case_three(t_stack *stack)
 		rot_down(stack, 1);
 }
 
-void	case_four_to_six(t_stack *a, t_stack *b)
+static void	case_four_to_six(t_stack *a, t_stack *b)
 {
 	size_t	size;
 	size_t	count;
@@ -55,3 +55,34 @@ void	case_four_to_six(t_stack *a, t_stack *b)
 	while (b->val > 0)
 		push(b, a, 2);
 }
+
+static int	scan_sort_order(t_stack *a)
+{
+	a = a->next;
+	while (a->next->index != 0)
+	{
+		if (a->val > a->next->val)
+			return (NOT_SORTED);
+		a = a->next;
+	}
+	return (ALREADY_SORTED);
+}
+
+int select_algo(t_stack *a, t_stack *b, t_storage *storage)
+{
+	size_t	size;
+	
+	size = a->val;
+	if (ALREADY_SORTED == scan_sort_order(a))
+		return (ALREADY_SORTED);
+	if (size == 2)
+		case_two(a);
+	else if (size == 3)
+		case_three(a);
+	else if (size <= 6)
+		case_four_to_six(a, b);
+	else
+		sort_stacks(storage, 0, storage->a>val - 1);
+	return (CONTINUE);
+}
+
