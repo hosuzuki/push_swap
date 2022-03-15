@@ -31,7 +31,7 @@ int	push(t_stack *stack1, t_stack *stack2, t_storage *storage)
 	t_stack *tmp2;
 
 	if (stack1->val < 1)
-		return ;
+		return (0);
 	head1 = stack1;
 	tmp1 = stack1->next;
 	head1->next = tmp1->next;
@@ -81,7 +81,7 @@ int	rot_up(t_stack *stack, t_storage *storage)
 	t_stack	*tmp2;
 
 	if (stack->val < 2)
-		return ;
+		return (0);
 	head = stack;
 	tmp1 = head->next;
 	tmp2 = head->prev;

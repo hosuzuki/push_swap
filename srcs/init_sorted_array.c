@@ -50,14 +50,14 @@ static void	quick_sort(int *sort, size_t left, size_t right)
 	quick_sort(sort, part, right);
 }
 
-t_sort	*init_sorted_array(t_stack *a, t_storage *storage)
+int	*init_sorted_array(t_stack *a, t_storage *storage)
 {
 	int	*sorted;
 	t_stack	*tmp;
 
 	sorted =  (int *)malloc(sizeof(int) * a->val);// no need to ad +1?
 	if (!sorted)
-		free_all_and_exit(storage, PRE_SORT);
+		free_all_and_exit(storage, INIT_SORTED_ARRAY);
 	tmp = a->next;
 	while (tmp->index != 0)
 	{

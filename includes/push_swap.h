@@ -17,45 +17,32 @@ typedef struct s_storage
 	t_stack	*b;
 	int	*sorted;
 	char	*cmds;
+	size_t cmds_len;
+	int	first_flag;
 }	t_storage;
 
 enum error_handling
 {
 	CONTINUE,
 	ERROR,
-	MAIN,
+	MAIN1,
+	MAIN2,
 	INIT_STORAGE,
 	VALIDATE_ARGV1,
 	VALIDATE_ARGV2,
 	SCAN_DUPLICATES,
 	ALLOC_STACK,
 	ATOI_PS,
+	INIT_SORTED_ARRAY,
 	INIT_CMDS_ARRAY,
+	RECORD_CMDS,
 
-
-	PRE_SORT1,
-	PRE_SORT2,
-	ALLOC_RECORD,
-	ALLOC_REC,
-	EXPAND_RECORD,
-
-
-	/*
-  ALLOC_ERROR,
-	INVALID_INPUT,
-	STACK_ERROR,
-	PRESORT_ERROR,
-	SORTED_MALLOC_ERROR,
-	MAIN_STACK_ERROR,
-	MAIN_SORT_ERROR,
-	CASE_GT,
-	SHAM_ERROR,
-*/
 };
 
-# define NOT_SORTED -2
-# define ALREADY_SORTED -1
-
+# define ON 0
+# define OFF 1
+# define NOT_SORTED -1
+# define ALREADY_SORTED -2
 # define SA 2
 # define SB 3
 # define PB 4 // change?
@@ -69,72 +56,48 @@ enum error_handling
 # define SS 12 // change this to 4
 
 
-// main.c
-//int		is_sorted(t_stack *stack);
+// init_stack.c
+t_stack	*init_stack(int argc, char **argv, t_storage *storage);
 
-//validate_argv.c
-t_stack	*validate_argv(int argc, char **argv);
+// free.c
+void	free_all_and_exit(t_storage *storage, enum error_handling status);
+void	free_stack(t_stack *stack);
 
-//init_stack.c
-t_stack	*init_stack(int args, char *argv[]);
+// init_sorted_array.c
+int	*init_sorted_array(t_stack *a, t_storage *storage);
 
-//exit.c
-void	exit_with_status(enum error_handling status);
-void	print_error_and_exit(enum error_handling status);
+// init_cmds_array.c
+char	*init_cmds_array(t_stack *a, t_storage *storage);
+void	record_cmds(t_storage *storage, int cmd);
 
-//free.c
-void	free_stack(t_stack *stack, int count);
-void	free_sort(t_sort *sort);
-void	free_all(t_stack *stack1, t_stack *stack2, t_sort *sort, char *record);
+// select_algo.c
+void	case_two(t_stack *stack, t_storage *storage);
+void	case_three(t_stack *stack, t_storage *storage);
+int select_algo(t_stack *a, t_stack *b, t_storage *storage);
 
-// pre_sort.c
-t_sort	*pre_sort(t_stack *stack);
+// sort_stacks
+void	sort_stacks(t_storage *storage, size_t l, size_t r);
 
-// recorder.c
-char	**record_array(size_t size, t_stack *stack_a, t_sort *sort);
-void	recorder(char **record, int cmd);
+// sort_stack_b
+void sort_stack_b(t_storage *storage, size_t l, size_t r);
 
-// cases_of_algo.c
-void	case_two(t_stack *stack);
-void	case_three(t_stack *stack);
-void	case_four_to_six(t_stack *stack1, t_stack *stack2);
-void	case_seven_or_more(t_stack *stack_a, t_stack *stack_b, t_sort *sort);
+// set_min_max_val.c
+void	set_max(t_stack *stack, t_storage *storage);
+void set_min(t_stack *stack, t_storage *storage);
+
 
 // operations.c
-void	swap(t_stack *stack, int ab);
-void	push(t_stack *stack1, t_stack *stack2, int ab);
-void	rot_down(t_stack *stack, int ab);
-void	rot_up(t_stack *stack, int ab);
-
-// search_val.c
-void	set_min(t_stack *stack, int ab);
-void	set_max(t_stack *stack, int ab);
-//void	renumber_index(t_stack *stack); // can be static?
-
-// sort_stacks.c
-void	sort_stacks(t_stacks *stacks, size_t l, size_t r, int first);
-
-// sort_stack_b.c
-void	sort_stack_b(t_stacks *stacks, size_t l, size_t r);
-
-// sort_stack_b_utils.c
-int		push_with_count(t_stacks *stacks);
-int		rot_up_with_count(t_stack *stack, int ab);
-void	push_all_to_a(t_stacks *stacks, size_t l, size_t r);
+void	swap(t_stack *stack, t_storage *storage);
+int	push(t_stack *stack1, t_stack *stack2, t_storage *storage);
+void	rot_down(t_stack *stack, t_storage *storage);
+int	rot_up(t_stack *stack, t_storage *storage);
 
 // optimize_cmds.c
-void	optimize_cmds(char *record);
+void	optimize_cmds(char *cmds);
 
-	// print_cmds.c
-void	print_cmds(char *record);
+// print_cmds
+void	print_cmds(char *cmds);
 
-
-
-
-
-// vals.c
-void	vals_storage(t_stack *stack, t_stacks *stacks,
-			t_sort *sort, char **record);
 
 // double_act.c
 void	ss(t_stack *stack_a, t_stack *stack_b);

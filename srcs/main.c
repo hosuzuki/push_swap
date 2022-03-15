@@ -33,7 +33,7 @@ static void	validate_argv(int argc, char **argv)
 		i = 0;
 		str = argv[j];
 		if (str[0] == '\0')
-			exit (VALIDATE_ARG1);
+			exit (VALIDATE_ARGV1);
 		if (str[0] == '-' && str[1] != '\0')
 			i++;
 		while (str[i])
@@ -41,19 +41,19 @@ static void	validate_argv(int argc, char **argv)
 			if (!ft_isdigit(str[i]))
 			{
 				write(2, "Error\n", 6);
-				exit (VALIDATE_ARG2);
+				exit (VALIDATE_ARGV2);
 			}
 			i++;
 		}
 		j++;
 	}
 }
-static t_storage	*init_storage(int argc, char **argv)
+static t_storage	*init_storage(void)
 {
 	t_storage	*storage;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	t_sort	*sorted;
+	int	*sorted;
 	char	*cmds;
 
 	storage = (t_storage *)malloc(sizeof(t_storage));
@@ -79,16 +79,16 @@ int main(int argc, char **argv)
 	if (argc < 2)
 		return (MAIN1);
 	validate_argv(argc, argv);
-	storage = init_storage(argc, argv);
+	storage = init_storage();
 	storage->a = init_stack(argc - 1, argv + 1, storage);
 	storage->b = init_stack(0, NULL, storage);
-	scan_dupulicates(storage->a, storage)
+	scan_dupulicates(storage->a, storage);
 	storage->sorted = init_sorted_array(storage->a, storage);
 	storage->cmds = init_cmds_array(storage->a, storage);
-	if (ALREADY_SORTED == select_algo(storage->a, storage->b, storage)
+	if (ALREADY_SORTED == select_algo(storage->a, storage->b, storage))
 		free_all_and_exit(storage, MAIN2);
 	optimize_cmds(storage->cmds);
-	print_cmds(*record);
+	print_cmds(storage->cmds);
 	free_all_and_exit(storage, 0);
 	return (0);
 }

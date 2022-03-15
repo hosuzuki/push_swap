@@ -1,14 +1,14 @@
 #include "push_swap.h"
 
-static void	push_all_to_a(t_stacks *stacks, size_t l, size_t r)
+static void	push_all_to_a(t_storage *storage, size_t l, size_t r)
 {
 	int i;
 
 	i = r - l + 1;
 	while (0 < i)
 	{
-		set_max(stacks->b, storage);
-		push(stacks->b, stacks->a, storage);
+		set_max(storage->b, storage);
+		push(storage->b, storage->a, storage);
 		i--;
 	}
 	return ;
@@ -94,8 +94,8 @@ void sort_stack_b(t_storage *storage, size_t l, size_t r)
 
 	x = (l + r) /2; // 1/2
 	y = (x + r) /2; // 3/4
-	count = count_more_than_pivot(storage->b, storage->sort->array[x],
-			storage->sort->array[l], storage->sort->array[r]);
+	count = count_more_than_pivot(storage->b, storage->sorted[x],
+			storage->sorted[l], storage->sorted[r]);
 	//can be changed
 	if (l <= r && r - l <= 9) //where the 9 comes from? 
 	{

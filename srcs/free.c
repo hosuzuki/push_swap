@@ -16,23 +16,7 @@ void	free_stack(t_stack *stack)
 	free (head);
 }
 
-/*void	free_stack(t_stack *stack, int count)
-{
-	t_stack	*head;
-	t_stack	*tmp;
 
-	head = stack;
-	stack = stack->next;
-	while (stack != head && count)
-	{
-		tmp = stack->next;
-		free(stack);
-		stack = tmp;
-		count--;
-	}
-	free(head);
-}
-*/
 void	free_all_and_exit(t_storage *storage, enum error_handling status)
 {
 	if (storage->a)
@@ -40,10 +24,9 @@ void	free_all_and_exit(t_storage *storage, enum error_handling status)
 	if (storage->b)
 		free_stack(storage->b);
 	if (storage->sorted)
-		free (sorted);
+		free (storage->sorted);
 	if (storage->cmds)
-		free (cmds);
+		free (storage->cmds);
 	free (storage);
 	exit (status);
 }
-

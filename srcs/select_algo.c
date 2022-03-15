@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static void	case_two(t_stack *stack, t_storage *storage)
+void	case_two(t_stack *stack, t_storage *storage)
 {
 	int	a;
 	int	b;
@@ -11,7 +11,7 @@ static void	case_two(t_stack *stack, t_storage *storage)
 		swap(stack, storage);
 }
 
-static void	case_three(t_stack *stack, t_storage *storage)
+void	case_three(t_stack *stack, t_storage *storage)
 {
 	int	a;
 	int	b;
@@ -51,7 +51,7 @@ static void	case_four_to_six(t_stack *a, t_stack *b, t_storage *storage)
 		push(a, b, storage);
 		count++;
 	}
-	case_three(a);
+	case_three(a, storage);
 	while (b->val > 0)
 		push(b, a, storage);
 }
@@ -82,7 +82,7 @@ int select_algo(t_stack *a, t_stack *b, t_storage *storage)
 	else if (size <= 6)
 		case_four_to_six(a, b, storage);
 	else
-		sort_stacks(storage, 0, storage->a>val - 1);
+		sort_stacks(storage, 0, storage->a->val - 1);
 	return (CONTINUE);
 }
 

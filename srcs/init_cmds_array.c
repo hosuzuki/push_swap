@@ -10,7 +10,7 @@ void	record_cmds(t_storage *storage, int cmd)
 	{
 		tmp = (char *)ft_calloc((storage->cmds_len * 2), sizeof(char));
 		if (!tmp)
-			free_all_and_exit(storage, INIT_NEW_ARRAY);
+			free_all_and_exit(storage, RECORD_CMDS);
 		ft_memcpy(tmp, storage->cmds, storage->cmds_len);
 		free(storage->cmds);
 		storage->cmds = tmp;
@@ -18,7 +18,6 @@ void	record_cmds(t_storage *storage, int cmd)
 	}
 	storage->cmds[i] = cmd;
 	i++;
-	}
 }
 
 char	*init_cmds_array(t_stack *a, t_storage *storage)

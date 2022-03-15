@@ -2,17 +2,14 @@ NAME = push_swap
 BONUS_NAME = checker
 SRC = srcs/main.c \
 			srcs/init_stack.c \
-			srcs/validate_argv.c \
-			srcs/exit.c \
 			srcs/free.c \
-			srcs/pre_sort.c \
-			srcs/recorder.c \
-			srcs/cases_of_algo.c \
+			srcs/init_sorted_array.c \
+			srcs/init_cmds_array.c \
+			srcs/select_algo.c \
 			srcs/operations.c \
-			srcs/search_val.c \
+			srcs/set_min_max.c \
 		 	srcs/sort_stacks.c \
 			srcs/sort_stack_b.c \
-			srcs/sort_stack_b_utils.c \
 			srcs/optimize_cmds.c \
 			srcs/print_cmds.c 
 

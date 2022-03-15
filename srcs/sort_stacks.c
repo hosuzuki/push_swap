@@ -26,15 +26,15 @@ static void	push_small_to_b(t_storage *storage, size_t x, size_t y, int count)
 		if (storage->a->next->val <= storage->sorted[x]) //val <=  1/4 part
 		{
 			if (storage->first_flag == ON)
-				r_count = push_and_rot_up_b(storage, r_count);
+				r_count = push_and_rot_up_b(storage);
 			else
 				push(storage->a, storage->b, storage);
 			count--;
 		}
-		else if (storages->a->next->val <= storage->sorted[y]) // val <=1/2
+		else if (storage->a->next->val <= storage->sorted[y]) // val <=1/2
 		{
 			if (storage->first_flag == OFF)
-				r_count += push_and_rot_up_b(storage, r_count);
+				r_count += push_and_rot_up_b(storage);
 			else
 				push(storage->a, storage->b, storage);
 			count--;
@@ -70,13 +70,15 @@ static int	count_pivot_or_less(t_stack *a, int pv, int lv, int rv)
 void	sort_stacks(t_storage *storage, size_t l, size_t r)
 {
 	int		count;
+	size_t	x;
+	size_t	y;
 
 	if (r - l <= 2)
 	{
 		if (storage->a->val == 3)
-			case_three(storage->a);
+			case_three(storage->a, storage);
 		else if (storage->a->val == 2)
-			case_two(storage->a);
+			case_two(storage->a, storage);
 		return ;
 	}
 	y = (l + r) / 2; //1/2
