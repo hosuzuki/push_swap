@@ -57,8 +57,9 @@ SRC = ft_isalpha.c \
 	./ft_printf/ft_print_hex.c \
 	./ft_printf/ft_print_str.c \
 	./ft_printf/ft_print_flags.c \
-	./ft_printf/ft_write_utils.c
-
+	./ft_printf/ft_write_utils.c \
+	./ft_gnl/get_next_line.c \
+	./ft_gnl/get_next_line_utils.c
 OBJ = $(SRC:.c=.o)
 HEAD = -I ./includes
 CC = gcc
