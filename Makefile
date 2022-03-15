@@ -12,7 +12,6 @@ SRC = srcs/main.c \
 			srcs/sort_stack_b.c \
 			srcs/optimize_cmds.c \
 			srcs/print_cmds.c 
-
 BONUS_SRC = srcs/checker.c
 OBJ = $(SRC:.c=.o)
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
@@ -32,7 +31,7 @@ RM = rm -f
 all : $(NAME)
 
 $(NAME) : $(OBJ) $(LIB)
-	$(CC) $(FLAGS) $(OBJ) $(LIB) -o $(NAME)
+	$(CC) $(FLAGS) $(OBJ) $(LIB) -o $(NAME) -g
 
 $(LIB) :
 	$(MAKE) -C ./libft

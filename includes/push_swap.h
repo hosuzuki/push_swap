@@ -36,7 +36,6 @@ enum error_handling
 	INIT_SORTED_ARRAY,
 	INIT_CMDS_ARRAY,
 	RECORD_CMDS,
-
 };
 
 # define ON 0
@@ -54,7 +53,6 @@ enum error_handling
 # define RR 10
 # define RRR 11
 # define SS 12 // change this to 4
-
 
 // init_stack.c
 t_stack	*init_stack(int argc, char **argv, t_storage *storage);
@@ -84,7 +82,6 @@ void sort_stack_b(t_storage *storage, size_t l, size_t r);
 // set_min_max_val.c
 void	set_max(t_stack *stack, t_storage *storage);
 void set_min(t_stack *stack, t_storage *storage);
-
 
 // operations.c
 void	swap(t_stack *stack, t_storage *storage);
