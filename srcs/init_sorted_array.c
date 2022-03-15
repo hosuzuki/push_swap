@@ -34,8 +34,8 @@ static int	partition(int *sort, int pivot,  size_t left, size_t right)
 			break ;
 		swap_in_sort(sort, l, r);
 	}
-//	if (l == left)
-//		return (l + 1);
+	if (l == left)
+		return (l + 1);
 	return (l);
 }
 

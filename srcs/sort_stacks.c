@@ -47,7 +47,8 @@ static void	push_small_to_b(t_storage *storage, size_t x, size_t y, int count)
 	reverse_rotate_b(storage, r_count);
 }
 
-static int	count_pivot_or_less(t_stack *a, int pv, int lv, int rv)
+//static int	count_pivot_or_less(t_stack *a, int pv, int lv, int rv)
+static int	count_pivot_or_less(t_stack *a, int pv)
 {
 	t_stack	*head;
 	int		count;
@@ -56,8 +57,6 @@ static int	count_pivot_or_less(t_stack *a, int pv, int lv, int rv)
 	head = a;
 	a = a->next;
 //	while (a != head && lv <= a->val && a->val <= rv) // does lv and rv needed?
-	(void)lv;// delete
-	(void)rv;//delete
 	while (a != head)
 	{
 		if (a->val <= pv)
@@ -83,8 +82,7 @@ void	sort_stacks(t_storage *storage, size_t l, size_t r)
 	}
 	y = (l + r) / 2; //1/2
 	x = (l + y) / 2; // 1 / 4
-	count = count_pivot_or_less(storage->a, storage->sorted[y],
-			storage->sorted[l], storage->sorted[r]); // change?
+	count = count_pivot_or_less(storage->a, storage->sorted[y]);
 	push_small_to_b(storage, x, y, count);// move small number to b
 	storage->first_flag = OFF;
 	sort_stacks(storage, y + 1, r); // 1/2 ~ right

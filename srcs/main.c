@@ -78,7 +78,7 @@ int main(int argc, char **argv)
 
 	if (argc < 2)
 		return (MAIN1);
-	validate_argv(argc, argv);
+	validate_argv(argc - 1, argv + 1);
 	storage = init_storage();
 	storage->a = init_stack(argc - 1, argv + 1, storage);
 	storage->b = init_stack(0, NULL, storage);

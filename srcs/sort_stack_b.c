@@ -66,7 +66,8 @@ static void	push_back_to_a(t_storage *storage, size_t x, size_t y, int count)
 	push_back_to_b(storage, p_count, ra_count, rb_count);
 }
 
-static int	count_more_than_pivot(t_stack *b, int pv, int lv, int rv)
+//static int	count_more_than_pivot(t_stack *b, int pv, int lv, int rv)
+static int	count_more_than_pivot(t_stack *b, int pv)
 {
 	t_stack	*head;
 	int		count;
@@ -74,8 +75,6 @@ static int	count_more_than_pivot(t_stack *b, int pv, int lv, int rv)
 	count = 0;
 	head = b;
 	b = b->next;
-	(void)lv;// delete
-	(void)rv;//delete
 	while (b != head)
 //	while (b != head && lv <= b->val && b->val <= rv)
 	{
@@ -94,8 +93,7 @@ void sort_stack_b(t_storage *storage, size_t l, size_t r)
 
 	x = (l + r) /2; // 1/2
 	y = (x + r) /2; // 3/4
-	count = count_more_than_pivot(storage->b, storage->sorted[x],
-			storage->sorted[l], storage->sorted[r]);
+	count = count_more_than_pivot(storage->b, storage->sorted[x]);
 	//can be changed
 	if (l <= r && r - l <= 9) //where the 9 comes from? 
 	{
