@@ -87,7 +87,7 @@ int main(int argc, char **argv)
 	storage->cmds = init_cmds_array(storage->a, storage);
 	if (ALREADY_SORTED == select_algo(storage->a, storage->b, storage)
 		free_all_and_exit(storage, MAIN2);
-	optimize_cmds(*record);
+	optimize_cmds(storage->cmds);
 	print_cmds(*record);
 	free_all_and_exit(storage, 0);
 	return (0);

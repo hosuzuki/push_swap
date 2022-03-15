@@ -1,30 +1,5 @@
 #include "push_swap.h"
 
-/*static void	print_a_cmd(char c)
-{
-	if (c == 2)
-		write(1, "sa\n", 3);
-	else if (c == 3)
-		write(1, "sb\n", 3);
-	else if (c == 4)
-		write(1, "pb\n", 3);
-	else if (c == 5)
-		write(1, "pa\n", 3);
-	else if (c == 6)
-		write(1, "rra\n", 4);
-	else if (c == 7)
-		write(1, "rrb\n", 4);
-	else if (c == 8)
-		write(1, "ra\n", 3);
-	else if (c == 9)
-		write(1, "rb\n", 3);
-	else if (c == 10)
-		write(1, "rr\n", 3);
-	else if (c == 11)
-		write(1, "rrr\n", 4);
-}
-
-*/
 static void	print_a_cmd(char c)
 {
 	if (c == SA)
@@ -51,20 +26,18 @@ static void	print_a_cmd(char c)
 		write(1, "rrr\n", 4);
 }
 
-void	print_cmds(char *record)
+void	print_cmds(char *cmds)
 {
 	size_t	i;
 
 	i = 0;
-//	optimize_cmds(record);
-	while (record[i])
+	while (cmds[i])
 	{
-		while (record[i] == 1)
+		while (cmds[i] == 1)
 			i++;
-		if (!record[i])
+		if (!cmds[i])
 			break ;
-		print_a_cmd(record[i]);
+		print_a_cmd(cmds[i]);
 		i++;
 	}
-//	vals_storage(NULL, NULL, NULL, NULL);
 }
