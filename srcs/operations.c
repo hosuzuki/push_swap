@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	swap(t_stack *stack, int ab)
+void	swap(t_stack *stack, t_storage *storage)
 {
 	t_stack	*head;
 	t_stack	*tmp1;
@@ -17,13 +17,13 @@ void	swap(t_stack *stack, int ab)
 	tmp2->prev = tmp1->prev;
 	tmp1->prev = tmp2;
 	tmp2->next = tmp1;
-	if (ab == 1)
-		recorder(NULL, SA);
-	else if (ab == 2)
-		recorder(NULL, SB);
+	if (stack == storage->a)
+		record_cmds(storage, SA);
+	else
+		record_cmds(storage, SB);
 }
 
-int	push(t_stack *stack1, t_stack *stack2, int ab)
+int	push(t_stack *stack1, t_stack *stack2, t_storage *storage)
 {
 	t_stack *head1;
 	t_stack *head2;
@@ -44,14 +44,14 @@ int	push(t_stack *stack1, t_stack *stack2, int ab)
 	tmp2->prev = tmp1;
 	head1->val--;
 	head2->val++;
-	if (ab == 1)
-		recorder(NULL, PB);
-	else if (ab == 2)
-		recorder(NULL, PA);
+	if (stack1 == storage->a)
+		record_cmds(storage, PB);
+	else
+		record_cmds(storage, PA);
 	return (1);
 }
 
-void	rot_down(t_stack *stack, int ab)
+void	rot_down(t_stack *stack, t_storage *storage)
 {
 	t_stack *head;
 	t_stack *tmp1;
@@ -68,13 +68,13 @@ void	rot_down(t_stack *stack, int ab)
 	tmp2->prev->next = head;
 	tmp2->prev = head;
 	tmp2->next = tmp1;
-	if (ab == 1)
-		recorder(NULL, RRA);
-	else if (ab == 2)
-		recorder(NULL, RRB);
+	if (stack == storage->a)
+		record_cmds(storage, RRA);
+	else
+		record_cmds(storage, RRB);
 }
 
-int	rot_up(t_stack *stack, int ab)
+int	rot_up(t_stack *stack, t_storage *storage)
 {
 	t_stack	*head;
 	t_stack	*tmp1;
@@ -91,9 +91,9 @@ int	rot_up(t_stack *stack, int ab)
 	tmp1->prev = tmp2;
 	tmp1->next = head;
 	tmp2->next = tmp1;
-	if (ab == 1)
-		recorder(NULL, RA);
-	else if (ab == 2)
-		recorder(NULL, RB);
+	if (stack == storage->a)
+		record_cmds(storage, RA);
+	else
+		record_cmds(storage, RB);
 	return (1);
 }

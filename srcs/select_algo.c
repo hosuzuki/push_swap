@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static void	case_two(t_stack *stack)
+static void	case_two(t_stack *stack, t_storage *storage)
 {
 	int	a;
 	int	b;
@@ -8,10 +8,10 @@ static void	case_two(t_stack *stack)
 	a = stack->next->val;
 	b = stack->next->next->val;
 	if (a > b)
-		swap(stack, 1);
+		swap(stack, storage);
 }
 
-static void	case_three(t_stack *stack)
+static void	case_three(t_stack *stack, t_storage *storage)
 {
 	int	a;
 	int	b;
@@ -21,24 +21,24 @@ static void	case_three(t_stack *stack)
 	b = stack->next->next->val;
 	c = stack->next->next->next->val;
 	if (b < a && a < c)
-		swap(stack, 1);
+		swap(stack, storage);
 	else if (c < b && b < a)
 	{
-		swap(stack, 1);
-		rot_down(stack, 1);
+		swap(stack, storage);
+		rot_down(stack, storage);
 	}
 	else if (b < c && c < a)
-		rot_up(stack, 1);
+		rot_up(stack, storage);
 	else if (a < c && c < b)
 	{
-		swap(stack, 1);
-		rot_up(stack, 1);
+		swap(stack, storage);
+		rot_up(stack, storage);
 	}
 	else if (c < a && a < b)
-		rot_down(stack, 1);
+		rot_down(stack, storage);
 }
 
-static void	case_four_to_six(t_stack *a, t_stack *b)
+static void	case_four_to_six(t_stack *a, t_stack *b, t_storage *storage)
 {
 	size_t	size;
 	size_t	count;
@@ -47,13 +47,13 @@ static void	case_four_to_six(t_stack *a, t_stack *b)
 	count = 0;
 	while (size - count > 3)
 	{
-		set_min(a, 1);
-		push(a, b, 1);
+		set_min(a, storage);
+		push(a, b, storage);
 		count++;
 	}
 	case_three(a);
 	while (b->val > 0)
-		push(b, a, 2);
+		push(b, a, storage);
 }
 
 static int	scan_sort_order(t_stack *a)
@@ -76,11 +76,11 @@ int select_algo(t_stack *a, t_stack *b, t_storage *storage)
 	if (ALREADY_SORTED == scan_sort_order(a))
 		return (ALREADY_SORTED);
 	if (size == 2)
-		case_two(a);
+		case_two(a, storage);
 	else if (size == 3)
-		case_three(a);
+		case_three(a, storage);
 	else if (size <= 6)
-		case_four_to_six(a, b);
+		case_four_to_six(a, b, storage);
 	else
 		sort_stacks(storage, 0, storage->a>val - 1);
 	return (CONTINUE);

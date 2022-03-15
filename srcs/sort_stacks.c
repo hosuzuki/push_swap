@@ -4,15 +4,15 @@ static void	reverse_rotate_b(t_storage *storage, int r_count)
 {
 	while ( 0 < r_count && storage->first_flag == OFF)
 	{
-		rot_down(storage->b, 2);
+		rot_down(storage->b, storage);
 		r_count--;
 	}
 }
 
 static int	push_and_rot_up_b(t_storage *storage)
 {
-	push(storage->a, storage->b, 1);
-	rot_up(storage->b, 2);
+	push(storage->a, storage->b, storage);
+	rot_up(storage->b, storage);
 	return (1);
 }
 
@@ -28,7 +28,7 @@ static void	push_small_to_b(t_storage *storage, size_t x, size_t y, int count)
 			if (storage->first_flag == ON)
 				r_count = push_and_rot_up_b(storage, r_count);
 			else
-				push(storage->a, storage->b, 1);
+				push(storage->a, storage->b, storage);
 			count--;
 		}
 		else if (storages->a->next->val <= storage->sorted[y]) // val <=1/2
@@ -36,13 +36,13 @@ static void	push_small_to_b(t_storage *storage, size_t x, size_t y, int count)
 			if (storage->first_flag == OFF)
 				r_count += push_and_rot_up_b(storage, r_count);
 			else
-				push(storage->a, storage->b, 1);
+				push(storage->a, storage->b, storage);
 			count--;
 		}
 //		else if (storage->a->next->val > storage->sorted[x]) //val > 1/4  this have to y or could be just else
 //		else if (storage->a->next->val > storage->sorted[y])
 		else
-			rot_up(storage->a, 1);
+			rot_up(storage->a, storage);
 	}
 	reverse_rotate_b(storage, r_count);
 }

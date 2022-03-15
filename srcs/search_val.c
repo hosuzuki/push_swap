@@ -37,7 +37,7 @@ static t_stack	*locate_max(t_stack *stack)
 	return (ret);
 }
 
-void	set_max(t_stack *stack, int ab)
+void	set_max(t_stack *stack, t_storage *storage)
 {
 	t_stack	*max;
 	size_t	size;
@@ -53,13 +53,13 @@ void	set_max(t_stack *stack, int ab)
 //			if (max->index == 2)
 //				swap(stack, ab);
 //			else
-				rot_up(stack, ab);
+				rot_up(stack, storage);
 //		}
 	}
 	else
 	{
 		while (stack->next != max)
-			rot_down(stack, ab);
+			rot_down(stack, storage);
 	}
 }
 
@@ -84,7 +84,7 @@ static t_stack	*locate_min(t_stack *stack)
 	return (ret);
 }
 
-void set_min(t_stack *stack, int ab)
+void set_min(t_stack *stack, t_storage *storage)
 {
 	t_stack	*min;
 	size_t	size;
@@ -104,13 +104,13 @@ void set_min(t_stack *stack, int ab)
 //			if (spot == 2) 
 //				swap(stack, ab);
 //			else
-				rot_up(stack, ab);
+				rot_up(stack, storage);
 		}
 	}
 	else
 	{
 		while (stack->next != min)
-			rot_down(stack, ab);
+			rot_down(stack, storage);
 	}
 }
 

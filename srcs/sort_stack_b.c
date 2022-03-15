@@ -7,8 +7,8 @@ static void	push_all_to_a(t_stacks *stacks, size_t l, size_t r)
 	i = r - l + 1;
 	while (0 < i)
 	{
-		set_max(stacks->b, 2);
-		push(stacks->b, stacks->a, 2);
+		set_max(stacks->b, storage);
+		push(stacks->b, stacks->a, storage);
 		i--;
 	}
 	return ;
@@ -23,17 +23,17 @@ static void	push_back_to_b(t_storage *storage, int p_count, int ra_count, int rb
 	b = storage->b;
 	while (ra_count > 0)
 	{
-		rot_down(a, 1);
+		rot_down(a, storage);
 		ra_count--;
 	}
 	while (rb_count > 0)
 	{
-		rot_down(b, 2);
+		rot_down(b, storage);
 		rb_count--;
 	}
 	while (p_count > 0)
 	{
-		push(a, b, 1);
+		push(a, b, storage);
 		p_count--;
 	}
 }
@@ -51,17 +51,17 @@ static void	push_back_to_a(t_storage *storage, size_t x, size_t y, int count)
 	{
 		if (storage->b->next->val > storage->sorted[y]) // val > 3/4
 		{
-			p_count += push(storage->b, storage->a, 2); 
+			p_count += push(storage->b, storage->a, storage); 
 			count--;
 		}
 		else if (storage->b->next->val > storage->sorted[x]) // val > 1/2
 		{
-			p_count += push(storage->b, storage->a, 2);
-			ra_count += rot_up(storage->a, 1);
+			p_count += push(storage->b, storage->a, storage);
+			ra_count += rot_up(storage->a, storage);
 			count--;
 		}
 		else
-			rb_count += rot_up(storage->b, 2); // doenn't need to count at last
+			rb_count += rot_up(storage->b, storage); // doenn't need to count at last
 	}
 	push_back_to_b(storage, p_count, ra_count, rb_count);
 }
