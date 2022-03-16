@@ -7,6 +7,7 @@ SRC = srcs/main.c \
 			srcs/init_sorted_array.c \
 			srcs/init_cmds_array.c \
 			srcs/select_algo.c \
+			srcs/record_one_cmd.c \
 			srcs/operations.c \
 			srcs/set_min_max.c \
 		 	srcs/sort_stacks.c \
@@ -17,7 +18,13 @@ BONUS_SRC = srcs/checker.c \
 			srcs/validate_argv.c \
 			srcs/init_stack.c \
 			srcs/free.c \
+			srcs/init_cmds_array.c \
+			srcs/select_algo.c \
+			srcs/record_one_cmd.c \
 			srcs/operations.c \
+			srcs/set_min_max.c \
+		 	srcs/sort_stacks.c \
+			srcs/sort_stack_b.c \
 			srcs/operations_two_at_once.c 
 OBJ = $(SRC:.c=.o)
 BONUS_OBJ = $(BONUS_SRC:.c=.o)

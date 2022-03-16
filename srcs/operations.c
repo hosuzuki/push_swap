@@ -41,7 +41,7 @@ int	push(t_stack *stack1, t_stack *stack2, t_storage *storage)
 	tmp2->prev = tmp1;
 	head1->val--;
 	head2->val++;
-	record_one_cmd(PA, PB, stack1, storage);
+	record_one_cmd(PB, PA, stack1, storage);
 	return (1);
 }
 

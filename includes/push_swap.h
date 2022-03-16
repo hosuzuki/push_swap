@@ -25,7 +25,7 @@ typedef struct s_storage
 enum error_handling
 {
 	CONTINUE,
-	ERROR,
+//	ERROR,
 	MAIN1,
 	MAIN2,
 	INIT_STORAGE,
@@ -74,13 +74,16 @@ int	*init_sorted_array(t_stack *a, t_storage *storage);
 
 // init_cmds_array.c
 char	*init_cmds_array(t_stack *a, t_storage *storage);
-void	record_cmds(t_storage *storage, int cmd);
 
 // select_algo.c
 void	case_two(t_stack *stack, t_storage *storage);
 void	case_three(t_stack *stack, t_storage *storage);
 int	scan_sort_order(t_stack *a);
 int select_algo(t_stack *a, t_stack *b, t_storage *storage);
+
+// record_one_cmd
+//void	record_cmds(int cmd, t_storage *storage);
+void	record_one_cmd(int cmd_a, int cmd_b, t_stack *stack, t_storage *storage);
 
 // sort_stacks
 void	sort_stacks(t_storage *storage, size_t l, size_t r);
