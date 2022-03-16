@@ -1,6 +1,7 @@
 NAME = push_swap
 BONUS_NAME = checker
 SRC = srcs/main.c \
+			srcs/validate_argv.c \
 			srcs/init_stack.c \
 			srcs/free.c \
 			srcs/init_sorted_array.c \
@@ -12,7 +13,12 @@ SRC = srcs/main.c \
 			srcs/sort_stack_b.c \
 			srcs/optimize_cmds.c \
 			srcs/print_cmds.c 
-BONUS_SRC = srcs/checker.c
+BONUS_SRC = srcs/checker.c \
+			srcs/validate_argv.c \
+			srcs/init_stack.c \
+			srcs/free.c \
+			srcs/operations.c \
+			srcs/operations_two_at_once.c 
 OBJ = $(SRC:.c=.o)
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
 ifdef BONUS_ON
