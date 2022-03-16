@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 20:32:54 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/16 21:10:53 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/17 08:11:43 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,14 @@ enum e_error_handling
 # define OFF 1
 # define SA 2
 # define SB 3
-# define SS 4
-# define PA 5
-# define PB 6
-# define RRA 7
-# define RRB 8
-# define RA 9
-# define RB 10
-# define RR 11
-# define RRR 12
+# define PA 4
+# define PB 5
+# define RRA 6
+# define RRB 7
+# define RA 8
+# define RB 9
+# define RR 10
+# define RRR 11
 
 // validate_argv.c
 void	scan_dupulicates(t_stack *a, t_storage *storage);
@@ -113,9 +112,6 @@ int		rot_up(t_stack *stack, t_storage *storage);
 
 // optimize_cmds.c
 void	optimize_cmds(char *cmds);
-
-// merge_cmds.c
-void	merge_cmds(char *cmds, size_t i, size_t j);
 
 	// print_cmds
 void	print_cmds(char *cmds);
