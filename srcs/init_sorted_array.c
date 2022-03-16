@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 21:26:49 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/16 21:44:16 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/17 07:18:10 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static int	partition(int *sort, int pivot, size_t left, size_t right)
 	r = right;
 	while (1)
 	{
-		while (l < right && pivot <= sort[l])
+		while (l < right && sort[l] < pivot)
 			l++;
-		while (left < r && sort[r] <= pivot)
+		while (left < r && pivot < sort[r])
 			r--;
 		if (l >= r)
 			break ;

@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 21:26:50 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/16 21:49:21 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/17 07:19:39 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	merge_sa_sb(char *cmds, size_t i, size_t j)
 
 void	merge_cmds(char *cmds, size_t i, size_t j)
 {
-	if ((cmds[i] == SA && cmds[j] == SB) 
+	if ((cmds[i] == SA && cmds[j] == SB)
 		|| (cmds[i] == SB && cmds[j] == SA))
 		merge_sa_sb(cmds, i, j);
 	else if ((cmds[i] == RA && cmds[j] == RB)
