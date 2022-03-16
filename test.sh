@@ -10,6 +10,9 @@ ARG="3 2 1"; ./push_swap $ARG | ./checker_Mac $ARG
 ARG="3 1 2"; ./push_swap $ARG | ./checker_Mac $ARG
 ARG="1 3 2"; ./push_swap $ARG | ./checker_Mac $ARG
 ARG="2 3 1"; ./push_swap $ARG | ./checker_Mac $ARG
+<<out
+out
+
 ARG="0 3 2 1"; ./push_swap $ARG | ./checker_Mac $ARG
 ARG="3 2 1 89 -20"; ./push_swap $ARG | ./checker_Mac $ARG
 ARG="3 2 1 30 38 90"; ./push_swap $ARG | ./checker_Mac $ARG
