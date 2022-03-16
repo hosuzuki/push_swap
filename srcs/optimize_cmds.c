@@ -1,27 +1,26 @@
 #include "push_swap.h"
 
+/*
 static size_t	merge_ra_rb(char *cmds, size_t i, size_t j)
 {
-	cmds[i] = 1;
+	cmds[i] = OFF;
 	cmds[j] = RR;
-	return (-1);
 }
 
 static size_t	merge_rra_rrb(char *cmds, size_t i, size_t j)
 {
-	cmds[i] = RRR;
-	cmds[j] = 1;
-	return (-1);
+	cmds[i] = OFF;
+	cmds[j] = RRR;
 }
+*/
 
-static size_t	offset(char *cmds, size_t i, size_t j)
+static void	offset(char *cmds, size_t i, size_t j)
 {
-	cmds[i] = 1;
-	cmds[j] = 1;
-	return (-1);
+	cmds[i] = OFF;
+	cmds[j] = OFF;
 }
 
-static size_t	merge_and_offset(char *cmds, size_t i, size_t j)
+static void	offset_and_merge(char *cmds, size_t i, size_t j)
 {
 	char	a;
 	char	b;
@@ -29,23 +28,28 @@ static size_t	merge_and_offset(char *cmds, size_t i, size_t j)
 	a = cmds[i];
 	b = cmds[j];
 	if ((a == PB && b == PA) || (a == PA && b == PB))
-		i = offset(cmds, i, j);
-	else if ((a == RRB && b == RB) || (a == RB && b == RRB))
-		i = offset(cmds, i, j);
+		offset(cmds, i, j);
 	else if ((a == RRA && b == RA) || (a == RA && b == RRA))
-		i = offset(cmds, i, j);
-	else if ((a == RA && b == RB) || (a == RB && b == RA))
-		i = merge_ra_rb(cmds, i, j);
-	else if (a == RRA)
-	{
-		while (cmds[j] == RRA || cmds[j] == RRR || cmds[j] == 1)
-			j++;
-		if (cmds[j] == RRB)
-			i = merge_rra_rrb(cmds, i, j);
-	}
-	return (i);
+		offset(cmds, i, j);
+	else if ((a == RRB && b == RB) || (a == RB && b == RRB))
+		offset(cmds, i, j);
+	else
+		merge_cmds(cmds, i, j);
 }
 
+void	optimize_cmds(char *cmds)
+{
+	size_t	i;
+
+	i = 0;
+	while (cmds[i + 1])
+	{
+		offset_and_merge(cmds, i, i + 1);
+		i++;
+	}
+}
+
+/*
 void	optimize_cmds(char *cmds)
 {
 	size_t	i;
@@ -68,3 +72,4 @@ void	optimize_cmds(char *cmds)
 			break ;
 	}
 }
+*/

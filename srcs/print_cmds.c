@@ -33,7 +33,7 @@ void	print_cmds(char *cmds)
 	i = 0;
 	while (cmds[i])
 	{
-		while (cmds[i] == 1)
+		while (cmds[i] == OFF)
 			i++;
 		if (!cmds[i])
 			break ;

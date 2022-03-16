@@ -13,6 +13,7 @@ SRC = srcs/main.c \
 		 	srcs/sort_stacks.c \
 			srcs/sort_stack_b.c \
 			srcs/optimize_cmds.c \
+			srcs/merge_cmds.c \
 			srcs/print_cmds.c 
 BONUS_SRC = srcs/checker.c \
 			srcs/validate_argv.c \

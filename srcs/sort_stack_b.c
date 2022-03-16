@@ -1,75 +1,18 @@
 #include "push_swap.h"
 
-void	case_three_in_b(t_stack *stack, t_storage *storage)
-{
-	int	a;
-	int	b;
-	int	c;
-
-	c = stack->next->val;
-	b = stack->next->next->val;
-	a = stack->next->next->next->val;
-	if (b < a && a < c)
-		swap(stack, storage);
-	else if (c < b && b < a)
-	{
-		swap(stack, storage);
-		rot_down(stack, storage);
-	}
-	else if (b < c && c < a)
-		rot_up(stack, storage);
-	else if (a < c && c < b)
-	{
-		swap(stack, storage);
-		rot_up(stack, storage);
-	}
-	else if (c < a && a < b)
-		rot_down(stack, storage);
-}
-
-static void	case_six_or_less_in_b(t_stack *a, t_stack *b, size_t size, t_storage *storage)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	if (size = 2)
-	{
-		x = b->next->val;
-		y = b->next->next->val;
-		if (x < y)
-			swap(b, storage);
-	}
-	while (size > 3)
-	{
-		set_max(b, storage);
-		push(b, a, storage);
-		size--;
-	}
-	case_three_in_b(b, storage);
-	while (size > 0)
-	{
-		push(b, a, storage);
-		size--;
-	}
-}
-
-/*
 static void	push_all_to_a(t_storage *storage, size_t l, size_t r)
 {
-	int i;
+	int count;
 
-	i = r - l + 1;
-	while (0 < i)
+	count = r - l + 1;
+	while (0 < count)
 	{
 		set_max(storage->b, storage);
 		push(storage->b, storage->a, storage);
-		i--;
+		count--;
 	}
 	return ;
 }
-*/
 
 static void	push_back_to_b(t_storage *storage, int p_count, int ra_count, int rb_count)
 {
@@ -152,16 +95,9 @@ void sort_stack_b(t_storage *storage, size_t l, size_t r)
 	y = (x + r) / 2; // 3/4
 	count = count_more_than_pivot(storage->b, storage->sorted[x]);
 	//can be changed
-/*
-	if (l <= r && r - l <= 9) //where the 9 comes from? 
+	if (l <= r && r - l <= 25) //where the 9 comes from? 
 	{
 		push_all_to_a(storage, l, r); 
-		return ;
-	}
-*/
-	if (l <= r && r - l <= 5) //where the 9 comes from? 
-	{
-		case_six_or_less_in_b(storage->a, storage->b, r - l + 1, storage); 
 		return ;
 	}
 	push_back_to_a(storage, x, y, count); // 

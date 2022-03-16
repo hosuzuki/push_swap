@@ -41,10 +41,10 @@ enum error_handling
 
 };
 
+# define ALREADY_SORTED -2
+# define NOT_SORTED -1
 # define ON 0
 # define OFF 1
-# define NOT_SORTED -1
-# define ALREADY_SORTED -2
 # define SA 2
 # define SB 3
 # define PB 4 // change?
@@ -104,7 +104,10 @@ int	rot_up(t_stack *stack, t_storage *storage);
 // optimize_cmds.c
 void	optimize_cmds(char *cmds);
 
-// print_cmds
+// merge_cmds.c
+void	merge_cmds(char *cmds, size_t i, size_t j);
+
+	// print_cmds
 void	print_cmds(char *cmds);
 
 // .operations_two_at_once.c
