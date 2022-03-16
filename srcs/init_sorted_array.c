@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_sorted_array.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/16 21:26:49 by hokutosuz         #+#    #+#             */
+/*   Updated: 2022/03/16 21:44:16 by hokutosuz        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	swap_in_sorted_array(int *sort, size_t a, size_t b)
@@ -9,37 +21,6 @@ static void	swap_in_sorted_array(int *sort, size_t a, size_t b)
 	sort[b] = tmp;
 }
 
-/*
- static int	partition(int *sort, int pivot, size_t left, size_t right)
-{
-	size_t	l;
-	size_t	r;
-
-	l = left;
-	r = right;
-	while (1)
-	{
-		while (l < right)
-		{
-			if (pivot <= sort[l])
-				break ;
-			l++;
-		}
-		while (left < r)
-		{
-			if (sort[r] <= pivot)
-				break ;
-			r--;
-		}
-		if (l >= r)
-			break ;
-		swap_in_sorted_array(sort, l, r);
-	}
-	if (l == left)
-		return (l + 1);
-	return (l);
-}
-*/
 static int	partition(int *sort, int pivot, size_t left, size_t right)
 {
 	size_t	l;
@@ -49,14 +30,10 @@ static int	partition(int *sort, int pivot, size_t left, size_t right)
 	r = right;
 	while (1)
 	{
-		while (l < right)
-			if (pivot <= sort[l++])
-				break ;
-		while (left < r)
-			if (sort[r--] <= pivot)
-				break ;
-		l--;
-		r++;
+		while (l < right && pivot <= sort[l])
+			l++;
+		while (left < r && sort[r] <= pivot)
+			r--;
 		if (l >= r)
 			break ;
 		swap_in_sorted_array(sort, l, r);

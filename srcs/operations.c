@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/16 21:26:50 by hokutosuz         #+#    #+#             */
+/*   Updated: 2022/03/16 21:26:50 by hokutosuz        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	swap(t_stack *stack, t_storage *storage)
@@ -22,10 +34,10 @@ void	swap(t_stack *stack, t_storage *storage)
 
 int	push(t_stack *stack1, t_stack *stack2, t_storage *storage)
 {
-	t_stack *head1;
-	t_stack *head2;
-	t_stack *tmp1;
-	t_stack *tmp2;
+	t_stack	*head1;
+	t_stack	*head2;
+	t_stack	*tmp1;
+	t_stack	*tmp2;
 
 	if (stack1->val < 1)
 		return (0);
@@ -68,9 +80,9 @@ int	rot_up(t_stack *stack, t_storage *storage)
 
 void	rot_down(t_stack *stack, t_storage *storage)
 {
-	t_stack *head;
-	t_stack *tmp1;
-	t_stack *tmp2;
+	t_stack	*head;
+	t_stack	*tmp1;
+	t_stack	*tmp2;
 
 	if (stack->val < 2)
 		return ;

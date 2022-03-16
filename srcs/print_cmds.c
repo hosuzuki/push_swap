@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_cmds.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/16 21:26:51 by hokutosuz         #+#    #+#             */
+/*   Updated: 2022/03/16 21:26:51 by hokutosuz        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	print_a_cmd(char c)
@@ -6,7 +18,7 @@ static void	print_a_cmd(char c)
 		write(1, "sa\n", 3);
 	else if (c == SB)
 		write(1, "sb\n", 3);
-	else if (c == SS) // added
+	else if (c == SS)
 		write(1, "ss\n", 3);
 	else if (c == PB)
 		write(1, "pb\n", 3);

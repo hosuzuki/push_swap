@@ -1,11 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/16 21:26:48 by hokutosuz         #+#    #+#             */
+/*   Updated: 2022/03/16 21:26:48 by hokutosuz        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-
-void end(void)__attribute__((destructor));
-
-void end(void)
-{
-    system("leaks checker");
-}
 
 static int	execute_cmd(t_stack *a, t_stack *b, char *cmd)
 {

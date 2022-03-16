@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_stack_b.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/16 21:26:53 by hokutosuz         #+#    #+#             */
+/*   Updated: 2022/03/16 21:46:30 by hokutosuz        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	push_all_to_a(t_storage *storage, size_t l, size_t r)
 {
-	int count;
+	int	count;
 
 	count = r - l + 1;
 	while (0 < count)
@@ -14,27 +26,22 @@ static void	push_all_to_a(t_storage *storage, size_t l, size_t r)
 	return ;
 }
 
-static void	push_back_to_b(t_storage *storage, int p_count, int ra_count, int rb_count)
+static void	push_back_to_b(t_storage *storage, int p, int ra, int rb)
 {
-	t_stack	*a;
-	t_stack	*b;
-
-	a = storage->a;
-	b = storage->b;
-	while (ra_count > 0)
+	while (ra > 0)
 	{
-		rot_down(a, storage);
-		ra_count--;
+		rot_down(storage->a, storage);
+		ra--;
 	}
-	while (rb_count > 0)
+	while (rb > 0)
 	{
-		rot_down(b, storage);
-		rb_count--;
+		rot_down(storage->b, storage);
+		rb--;
 	}
-	while (p_count > 0)
+	while (p > 0)
 	{
-		push(a, b, storage);
-		p_count--;
+		push(storage->a, storage->b, storage);
+		p--;
 	}
 }
 
@@ -49,24 +56,23 @@ static void	push_back_to_a(t_storage *storage, size_t x, size_t y, int count)
 	rb_count = 0;
 	while (0 < count)
 	{
-		if (storage->b->next->val > storage->sorted[y]) // val > 3/4
+		if (storage->b->next->val > storage->sorted[y])
 		{
-			p_count += push(storage->b, storage->a, storage); 
+			p_count += push(storage->b, storage->a, storage);
 			count--;
 		}
-		else if (storage->b->next->val > storage->sorted[x]) // val > 1/2
+		else if (storage->b->next->val > storage->sorted[x])
 		{
 			p_count += push(storage->b, storage->a, storage);
 			ra_count += rot_up(storage->a, storage);
 			count--;
 		}
 		else
-			rb_count += rot_up(storage->b, storage); // doenn't need to count at last
+			rb_count += rot_up(storage->b, storage);
 	}
 	push_back_to_b(storage, p_count, ra_count, rb_count);
 }
 
-//static int	count_more_than_pivot(t_stack *b, int pv, int lv, int rv)
 static int	count_more_than_pivot(t_stack *b, int pv)
 {
 	t_stack	*head;
@@ -76,32 +82,30 @@ static int	count_more_than_pivot(t_stack *b, int pv)
 	head = b;
 	b = b->next;
 	while (b != head)
-//	while (b != head && lv <= b->val && b->val <= rv)
 	{
-		if (b->val > pv) //what if to use >=
+		if (b->val > pv)
 			count++;
 		b = b->next;
 	}
 	return (count);
 }
 
-void sort_stack_b(t_storage *storage, size_t l, size_t r)
+void	sort_stack_b(t_storage *storage, size_t l, size_t r)
 {
 	int		count;
 	size_t	x;
 	size_t	y;
 
-	x = (l + r) / 2; // 1/2
-	y = (x + r) / 2; // 3/4
+	x = (l + r) / 2;
+	y = (x + r) / 2;
 	count = count_more_than_pivot(storage->b, storage->sorted[x]);
-	//can be changed
-	if (l <= r && r - l <= 25) //where the 9 comes from? 
+	if (l <= r && r - l <= 25)
 	{
-		push_all_to_a(storage, l, r); 
+		push_all_to_a(storage, l, r);
 		return ;
 	}
-	push_back_to_a(storage, x, y, count); // 
-	sort_stack_b(storage, y + 1, r); //3/4 + 1 ~ r
-	sort_stack_b(storage, x + 1, y);// 1/2 +1  ~  3/4
-	sort_stack_b(storage, l, x); // l ~ 1/2
+	push_back_to_a(storage, x, y, count);
+	sort_stack_b(storage, y + 1, r);
+	sort_stack_b(storage, x + 1, y);
+	sort_stack_b(storage, l, x);
 }

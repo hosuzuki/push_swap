@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   select_algo.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/16 21:26:52 by hokutosuz         #+#    #+#             */
+/*   Updated: 2022/03/16 21:26:52 by hokutosuz        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	case_two(t_stack *stack, t_storage *storage)
@@ -68,10 +80,10 @@ int	scan_sort_order(t_stack *a)
 	return (ALREADY_SORTED);
 }
 
-int select_algo(t_stack *a, t_stack *b, t_storage *storage)
+int	select_algo(t_stack *a, t_stack *b, t_storage *storage)
 {
 	size_t	size;
-	
+
 	size = a->val;
 	if (ALREADY_SORTED == scan_sort_order(a))
 		return (ALREADY_SORTED);
@@ -85,4 +97,3 @@ int select_algo(t_stack *a, t_stack *b, t_storage *storage)
 		sort_stacks(storage, 0, storage->a->val - 1);
 	return (CONTINUE);
 }
-

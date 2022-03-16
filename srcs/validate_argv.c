@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_argv.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/16 21:26:53 by hokutosuz         #+#    #+#             */
+/*   Updated: 2022/03/16 21:26:53 by hokutosuz        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	scan_dupulicates(t_stack *a, t_storage *storage)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	a = a->next;
 	while (a->next->index != 0)
@@ -48,4 +60,3 @@ void	validate_argv(int argc, char **argv)
 		j++;
 	}
 }
-

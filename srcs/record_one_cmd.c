@@ -1,11 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   record_one_cmd.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/16 21:26:52 by hokutosuz         #+#    #+#             */
+/*   Updated: 2022/03/16 21:26:52 by hokutosuz        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	record_cmds(int cmd, t_storage *storage)
 {
-	static size_t i;
-	char *tmp;
+	static size_t	i;
+	char			*tmp;
 
-//	i = 0;
 	if (storage == NULL)
 		return ;
 	if (storage->cmds_len < i + 2)

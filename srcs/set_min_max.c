@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set_min_max.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/16 21:26:52 by hokutosuz         #+#    #+#             */
+/*   Updated: 2022/03/16 21:26:52 by hokutosuz        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	renumber_index(t_stack *stack)
@@ -20,7 +32,6 @@ static t_stack	*locate_max(t_stack *stack)
 {
 	t_stack	*ret;
 	int		max;
-//	size_t		max;
 
 	stack = stack->next;
 	max = stack->val;
@@ -45,16 +56,10 @@ void	set_max(t_stack *stack, t_storage *storage)
 	renumber_index(stack);
 	max = locate_max(stack);
 	size = stack->val;
-//	if (max->index - 1 <= (size - max->index + 1))
 	if (max->index <= (size / 2))
 	{
 		while (stack->next != max)
-//		{
-//			if (max->index == 2)
-//				swap(stack, ab);
-//			else
-				rot_up(stack, storage);
-//		}
+			rot_up(stack, storage);
 	}
 	else
 	{
@@ -67,7 +72,6 @@ static t_stack	*locate_min(t_stack *stack)
 {
 	t_stack	*ret;
 	int		min;
-//	size_t	min;
 
 	stack = stack->next;
 	min = stack->val;
@@ -84,28 +88,20 @@ static t_stack	*locate_min(t_stack *stack)
 	return (ret);
 }
 
-void set_min(t_stack *stack, t_storage *storage)
+void	set_min(t_stack *stack, t_storage *storage)
 {
 	t_stack	*min;
 	size_t	size;
-//	size_t	spot;
 
 	renumber_index(stack);
 	min = locate_min(stack);
 	if (min == stack->next)
 		return ;
-//	spot = min->index;
 	size = stack->val;
-//	if (min->index - 1 <= (size - min->index + 1))
-	if (min->index <= (size / 2)) 
+	if (min->index <= (size / 2))
 	{
 		while (stack->next != min)
-		{
-//			if (spot == 2) 
-//				swap(stack, ab);
-//			else
-				rot_up(stack, storage);
-		}
+			rot_up(stack, storage);
 	}
 	else
 	{
@@ -113,4 +109,3 @@ void set_min(t_stack *stack, t_storage *storage)
 			rot_down(stack, storage);
 	}
 }
-
