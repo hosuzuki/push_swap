@@ -85,11 +85,11 @@ static t_storage	*init_storage(void)
 	return (storage);
 }
 
-int	main(int args, char **argv)
+int	main(int argc, char **argv)
 {
 	t_storage	*storage;
 
-	if (args < 2)
+	if (argc < 2)
 		return (CHECKER_MAIN);
 	validate_argv(argc - 1, argv + 1);
 	storage = init_storage();

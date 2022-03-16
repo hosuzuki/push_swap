@@ -17,10 +17,7 @@ void	swap(t_stack *stack, t_storage *storage)
 	tmp2->prev = tmp1->prev;
 	tmp1->prev = tmp2;
 	tmp2->next = tmp1;
-	if (stack == storage->a)
-		record_cmds(storage, SA);
-	else
-		record_cmds(storage, SB);
+	record_one_cmd(SA, SB, stack, storage);
 }
 
 int	push(t_stack *stack1, t_stack *stack2, t_storage *storage)
@@ -44,10 +41,28 @@ int	push(t_stack *stack1, t_stack *stack2, t_storage *storage)
 	tmp2->prev = tmp1;
 	head1->val--;
 	head2->val++;
-	if (stack1 == storage->a)
-		record_cmds(storage, PB);
-	else
-		record_cmds(storage, PA);
+	record_one_cmd(PA, PB, stack1, storage);
+	return (1);
+}
+
+int	rot_up(t_stack *stack, t_storage *storage)
+{
+	t_stack	*head;
+	t_stack	*tmp1;
+	t_stack	*tmp2;
+
+	if (stack->val < 2)
+		return (0);
+	head = stack;
+	tmp1 = head->next;
+	tmp2 = head->prev;
+	head->next = tmp1->next;
+	head->prev = tmp1;
+	tmp1->next->prev = head;
+	tmp1->prev = tmp2;
+	tmp1->next = head;
+	tmp2->next = tmp1;
+	record_one_cmd(RA, RB, stack, storage);
 	return (1);
 }
 
@@ -68,32 +83,5 @@ void	rot_down(t_stack *stack, t_storage *storage)
 	tmp2->prev->next = head;
 	tmp2->prev = head;
 	tmp2->next = tmp1;
-	if (stack == storage->a)
-		record_cmds(storage, RRA);
-	else
-		record_cmds(storage, RRB);
-}
-
-int	rot_up(t_stack *stack, t_storage *storage)
-{
-	t_stack	*head;
-	t_stack	*tmp1;
-	t_stack	*tmp2;
-
-	if (stack->val < 2)
-		return (0);
-	head = stack;
-	tmp1 = head->next;
-	tmp2 = head->prev;
-	head->next = tmp1->next;
-	head->prev = tmp1;
-	tmp1->next->prev = head;
-	tmp1->prev = tmp2;
-	tmp1->next = head;
-	tmp2->next = tmp1;
-	if (stack == storage->a)
-		record_cmds(storage, RA);
-	else
-		record_cmds(storage, RB);
-	return (1);
+	record_one_cmd(RRA, RRB, stack, storage);
 }
