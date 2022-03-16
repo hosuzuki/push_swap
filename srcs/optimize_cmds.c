@@ -6,25 +6,11 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 21:26:51 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/16 21:26:51 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/17 08:04:56 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*
-static size_t	merge_ra_rb(char *cmds, size_t i, size_t j)
-{
-	cmds[i] = OFF;
-	cmds[j] = RR;
-}
-
-static size_t	merge_rra_rrb(char *cmds, size_t i, size_t j)
-{
-	cmds[i] = OFF;
-	cmds[j] = RRR;
-}
-*/
 
 static void	offset(char *cmds, size_t i, size_t j)
 {
@@ -60,28 +46,3 @@ void	optimize_cmds(char *cmds)
 		i++;
 	}
 }
-
-/*
-void	optimize_cmds(char *cmds)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = 1;
-	while (cmds[i + 1])
-	{
-		while (cmds[i] == 1)
-			i++;
-		j = i + 1;
-		while (cmds[j] == 1)
-			j++;
-		if (cmds[j] == 0)
-			break ;
-		i = merge_and_offset(cmds, i, j);
-		i++;
-		if (!cmds[i])
-			break ;
-	}
-}
-*/

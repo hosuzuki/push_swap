@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 21:26:48 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/16 21:26:48 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/17 07:26:12 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	print_result(t_stack *a, t_stack *b, int error_flag)
 		write(1, "KO\n", 3);
 }
 
-static void	get_cmds(t_stack *a, t_stack *b)
+static void	receive_cmds(t_stack *a, t_stack *b)
 {
 	char	*cmd;
 	int		error_flag;
@@ -108,7 +108,7 @@ int	main(int argc, char **argv)
 	storage->a = init_stack(argc - 1, argv + 1, storage);
 	storage->b = init_stack(0, NULL, storage);
 	scan_dupulicates(storage->a, storage);
-	get_cmds(storage->a, storage->b);
+	receive_cmds(storage->a, storage->b);
 	free_all(storage);
 	return (0);
 }
