@@ -2,6 +2,7 @@
 # define PUSH_SWAP_H
 
 # include "../libft/includes/libft.h"
+# include "../libft/includes/get_next_line.h"
 
 typedef struct s_stack
 {
@@ -36,6 +37,8 @@ enum error_handling
 	INIT_SORTED_ARRAY,
 	INIT_CMDS_ARRAY,
 	RECORD_CMDS,
+	CHECKER_MAIN,
+
 };
 
 # define ON 0
@@ -54,11 +57,16 @@ enum error_handling
 # define RRR 11
 # define SS 12 // change this to 4
 
+// validate_argv.c
+void	scan_dupulicates(t_stack *a, t_storage *storage);
+void	validate_argv(int argc, char **argv);
+
 // init_stack.c
 t_stack	*init_stack(int argc, char **argv, t_storage *storage);
 
 // free.c
 void	free_all_and_exit(t_storage *storage, enum error_handling status);
+void	free_all(t_storage *storage);
 void	free_stack(t_stack *stack);
 
 // init_sorted_array.c
@@ -71,6 +79,7 @@ void	record_cmds(t_storage *storage, int cmd);
 // select_algo.c
 void	case_two(t_stack *stack, t_storage *storage);
 void	case_three(t_stack *stack, t_storage *storage);
+int	scan_sort_order(t_stack *a);
 int select_algo(t_stack *a, t_stack *b, t_storage *storage);
 
 // sort_stacks
@@ -95,10 +104,9 @@ void	optimize_cmds(char *cmds);
 // print_cmds
 void	print_cmds(char *cmds);
 
-
-// double_act.c
-void	ss(t_stack *stack_a, t_stack *stack_b);
-void	rr(t_stack *stack_a, t_stack *stack_b);
-void	rrr(t_stack *stack_a, t_stack *stack_b);
+// .operations_two_at_once.c
+void	ss(t_stack *a, t_stack *b, t_storage *storage);
+void	rr(t_stack *a, t_stack *b, t_storage *storage);
+void	rrr(t_stack *a, t_stack *b, t_storage *storage);
 
 #endif
