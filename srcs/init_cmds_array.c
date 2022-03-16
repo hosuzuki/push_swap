@@ -6,6 +6,8 @@ void	record_cmds(t_storage *storage, int cmd)
 	char *tmp;
 
 //	i = 0;
+	if (storage == NULL)
+		return ;
 	if (storage->cmds_len < i + 2)
 	{
 		tmp = (char *)ft_calloc((storage->cmds_len * 2), sizeof(char));

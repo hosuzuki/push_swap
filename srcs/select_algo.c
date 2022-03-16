@@ -56,7 +56,7 @@ static void	case_four_to_six(t_stack *a, t_stack *b, t_storage *storage)
 		push(b, a, storage);
 }
 
-static int	scan_sort_order(t_stack *a)
+int	scan_sort_order(t_stack *a)
 {
 	a = a->next;
 	while (a->next->index != 0)

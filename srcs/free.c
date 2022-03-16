@@ -16,8 +16,7 @@ void	free_stack(t_stack *stack)
 	free (head);
 }
 
-
-void	free_all_and_exit(t_storage *storage, enum error_handling status)
+void	free_all(t_storage *storage)
 {
 	if (storage->a)
 		free_stack(storage->a);
@@ -27,6 +26,12 @@ void	free_all_and_exit(t_storage *storage, enum error_handling status)
 		free (storage->sorted);
 	if (storage->cmds)
 		free (storage->cmds);
-	free (storage);
+	if (storage)
+		free (storage);
+}
+
+void	free_all_and_exit(t_storage *storage, enum error_handling status)
+{
+	free_all(storage);
 	exit (status);
 }

@@ -27,7 +27,7 @@ static int	atoi_ps(char *str, t_stack *head, t_storage *storage)
 	{
 		if (ERROR == int_range(sign, res, str[i] - '0'))
 		{
-			write(2, "Error\n", 6);
+			write(1, "Error\n", 6);
 			free_stack (head);
 			free_all_and_exit(storage, ATOI_PS);
 		}
