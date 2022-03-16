@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 12:17:51 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/01/12 14:00:37 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/16 11:32:28 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ static char	*ft_create_ret(t_node *buf_lst)
 	char	*isnewl;
 	char	*tmp;
 
-	isnewl = ft_strchr(buf_lst->str, '\n');
+	isnewl = ft_strchr_gnl(buf_lst->str, '\n');
 	if (!isnewl)
 	{
 		if (*(buf_lst->str) == '\0')
 			return (NULL);
-		ret = ft_strndup(buf_lst->str, ft_strlen(buf_lst->str));
+		ret = ft_strndup_gnl(buf_lst->str, ft_strlen_gnl(buf_lst->str));
 	}
 	else
 	{
-		ret = ft_strndup(buf_lst->str, isnewl - buf_lst->str + 1);
-		tmp = ft_strndup(isnewl + 1, ft_strlen(isnewl + 1));
+		ret = ft_strndup_gnl(buf_lst->str, isnewl - buf_lst->str + 1);
+		tmp = ft_strndup_gnl(isnewl + 1, ft_strlen_gnl(isnewl + 1));
 		if (!tmp)
 		{
 			free (ret);
@@ -68,7 +68,7 @@ static int	ft_read(int fd, t_node *buf_lst)
 	while (1)
 	{
 		buf = NULL;
-		if (ft_strchr(buf_lst->str, '\n'))
+		if (ft_strchr_gnl(buf_lst->str, '\n'))
 			return (GOOD);
 		buf = (char *)malloc(sizeof(char) * ((size_t)BUFFER_SIZE + 1));
 		rc = read(fd, buf, BUFFER_SIZE);
@@ -80,7 +80,7 @@ static int	ft_read(int fd, t_node *buf_lst)
 			return (END);
 		}
 		buf[rc] = '\0';
-		buf = ft_strjoin(buf_lst->str, buf);
+		buf = ft_strjoin_gnl(buf_lst->str, buf);
 		if (!buf)
 			return (ERROR);
 		free (buf_lst->str);
@@ -94,7 +94,7 @@ static t_node	*ft_create_lst(int fd, t_node **holder)
 
 	if (!(*holder))
 	{
-		buf_lst = ft_lstnew(fd, "");
+		buf_lst = ft_lstnew_gnl(fd, "");
 		*holder = buf_lst;
 		return (buf_lst);
 	}
@@ -105,7 +105,7 @@ static t_node	*ft_create_lst(int fd, t_node **holder)
 			return (buf_lst);
 		buf_lst = buf_lst->next;
 	}
-	buf_lst = ft_lstnew(fd, "");
+	buf_lst = ft_lstnew_gnl(fd, "");
 	if (!buf_lst)
 		return (buf_lst);
 	buf_lst->next = *holder;
