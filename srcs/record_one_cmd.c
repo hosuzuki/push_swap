@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 21:26:52 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/16 21:26:52 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/17 08:20:50 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ static void	record_cmds(int cmd, t_storage *storage)
 	static size_t	i;
 	char			*tmp;
 
-	if (storage == NULL)
-		return ;
 	if (storage->cmds_len < i + 2)
 	{
 		tmp = (char *)ft_calloc((storage->cmds_len * 2), sizeof(char));

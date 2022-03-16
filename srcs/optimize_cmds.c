@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 21:26:51 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/17 08:11:30 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/17 08:40:17 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ static void	offset(char *cmds, size_t i, size_t j)
 void	optimize_cmds(char *cmds)
 {
 	size_t	i;
-	char		a;
-	char		b;
+	char	a;
+	char	b;
 
 	i = 0;
 	a = cmds[i];
