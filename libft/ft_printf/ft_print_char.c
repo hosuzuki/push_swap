@@ -6,12 +6,11 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 21:10:30 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/02 17:40:49 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/16 09:09:12 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 void	ft_print_char(t_stock *lst, int c)
 {

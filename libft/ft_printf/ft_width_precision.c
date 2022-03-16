@@ -6,12 +6,11 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 20:41:14 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/02 17:42:49 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/16 09:10:52 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 void	ft_save_precision(const char *fmt, t_stock *lst, size_t *i)
 {

@@ -6,12 +6,11 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/02 17:41:34 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/16 09:09:44 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 static void	ft_print_space_hex(t_stock *lst, size_t len)
 {

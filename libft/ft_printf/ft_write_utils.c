@@ -6,12 +6,11 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 07:14:49 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/02 17:43:02 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/16 09:10:59 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int	ft_under_intmax(t_stock *lst, size_t total, size_t len)
 {
