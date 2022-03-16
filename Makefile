@@ -44,13 +44,13 @@ RM = rm -f
 all : $(NAME)
 
 $(NAME) : $(OBJ) $(LIB)
-	$(CC) $(FLAGS) $(OBJ) $(LIB) -o $(NAME) -g
+	$(CC) $(FLAGS) $(OBJ) $(LIB) -o $(NAME)
 
 $(LIB) :
 	$(MAKE) -C ./libft
 
 .c.o :
-	$(CC) $(FLAGS) -c $< -o $(<:.c=.o) $(HEAD) -g
+	$(CC) $(FLAGS) -c $< -o $(<:.c=.o) $(HEAD)
 
 clean :
 	$(MAKE) clean -C ./libft
