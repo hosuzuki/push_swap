@@ -4,7 +4,7 @@ static int	int_range(int sign, long long res, char n)
 {
 	if (sign == 1 && (long long)INT_MAX < res * 10 + n)
 		return (ERROR);
-	else if(sign == -1 && (long long)INT_MIN > (-1 * res) * 10 - n)
+	else if (sign == -1 && (long long)INT_MIN > (-1 * res) * 10 - n)
 		return (ERROR);
 	return (CONTINUE);
 }
@@ -53,7 +53,7 @@ static t_stack	*alloc_stack(t_stack *head, t_storage *storage)
 t_stack	*init_stack(int argc, char **argv, t_storage *storage)
 {
 	t_stack	*head;
-	t_stack *tmp;
+	t_stack	*tmp;
 	int		i;
 
 	head = alloc_stack(NULL, storage);

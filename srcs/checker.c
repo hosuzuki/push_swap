@@ -1,5 +1,12 @@
 #include "push_swap.h"
 
+void end(void)__attribute__((destructor));
+
+void end(void)
+{
+    system("leaks checker");
+}
+
 static int	execute_cmd(t_stack *a, t_stack *b, char *cmd)
 {
 	if (!ft_strncmp(cmd, "sa\n", 3))
@@ -64,10 +71,10 @@ static void	get_cmds(t_stack *a, t_stack *b)
 static t_storage	*init_storage(void)
 {
 	t_storage	*storage;
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	int	*sorted;
-	char	*cmds;
+	t_stack		*stack_a;
+	t_stack		*stack_b;
+	int			*sorted;
+	char		*cmds;
 
 	storage = (t_storage *)malloc(sizeof(t_storage));
 	if (!storage)

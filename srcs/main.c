@@ -1,12 +1,19 @@
 #include "push_swap.h"
 
+void end(void)__attribute__((destructor));
+
+void end(void)
+{
+    system("leaks push_swap");
+}
+
 static t_storage	*init_storage(void)
 {
 	t_storage	*storage;
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	int	*sorted;
-	char	*cmds;
+	t_stack		*stack_a;
+	t_stack		*stack_b;
+	int			*sorted;
+	char		*cmds;
 
 	storage = (t_storage *)malloc(sizeof(t_storage));
 	if (!storage)
@@ -24,7 +31,7 @@ static t_storage	*init_storage(void)
 	return (storage);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_storage	*storage;
 

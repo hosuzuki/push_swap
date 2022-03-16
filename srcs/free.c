@@ -30,7 +30,7 @@ void	free_all(t_storage *storage)
 		free (storage);
 }
 
-void	free_all_and_exit(t_storage *storage, enum error_handling status)
+void	free_all_and_exit(t_storage *storage, enum e_error_handling status)
 {
 	free_all(storage);
 	exit (status);
