@@ -6,13 +6,14 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 21:26:53 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/17 08:59:16 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/17 11:59:09 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	reverse_rotate_b(t_storage *storage, int r)
+//static void	reverse_rotate_b(t_storage *storage, int r)
+void	reverse_rotate_b(t_storage *storage, int r)
 {
 	while (0 < r && storage->first_flag == OFF)
 	{

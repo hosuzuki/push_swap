@@ -6,12 +6,13 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 21:26:53 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/17 08:39:01 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/17 11:57:37 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
 static void	push_all_to_a(t_storage *storage, size_t l, size_t r)
 {
 	int	count;
@@ -25,20 +26,37 @@ static void	push_all_to_a(t_storage *storage, size_t l, size_t r)
 	}
 	return ;
 }
+*/
+
+static void	push_all_to_a(t_storage *storage, size_t l, size_t r)
+{
+	int	count;
+	int r_count;
+
+	count = r - l + 1;
+	while (0 < count)
+	{
+		r_count = set_max(storage->b, count, storage);
+		push(storage->b, storage->a, storage);
+		reverse_rotate_b(storage, r_count);
+		count--;
+	}
+	return ;
+}
 
 static void	back_to_b_top(t_storage *storage, int p, int ra, int rb)
 {
-	while (ra > 0)
+	while (0 < ra)
 	{
 		rot_down(storage->a, storage);
 		ra--;
 	}
-	while (rb > 0)
+	while (0 < rb)
 	{
 		rot_down(storage->b, storage);
 		rb--;
 	}
-	while (p > 0)
+	while (0 < p)
 	{
 		push(storage->a, storage->b, storage);
 		p--;
