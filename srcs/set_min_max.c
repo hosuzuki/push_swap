@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 21:26:52 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/17 12:17:18 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/17 12:30:49 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void	renumber_index(t_stack *stack)
 	stack->val = i;
 }
 
-/*
 static t_stack	*locate_max(t_stack *stack)
 {
 	t_stack	*ret;
@@ -48,9 +47,7 @@ static t_stack	*locate_max(t_stack *stack)
 	}
 	return (ret);
 }
-*/
 
-/*
 void	set_max(t_stack *stack, t_storage *storage)
 {
 	t_stack	*max;
@@ -69,33 +66,6 @@ void	set_max(t_stack *stack, t_storage *storage)
 		while (stack->next != max)
 			rot_down(stack, storage);
 	}
-}
-*/
-
-int	set_max(t_stack *stack, int count, t_storage *storage)
-{
-	t_stack	*tmp;
-	t_stack	*max;
-	int			max_val;
-	int			r;
-
-	tmp = stack->next;
-	max = tmp;
-	max_val = tmp->val;
-	r = 0;
-	while (0 < count)
-	{
-		if (max_val < tmp->val)
-		{
-			max_val = tmp->val;
-			max = tmp;
-		}
-		tmp = tmp->next;
-		count--;
-	}
-	while (stack->next != max)
-		r += rot_up(stack, storage);
-	return (r);
 }
 
 static t_stack	*locate_min(t_stack *stack)

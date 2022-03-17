@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 20:32:54 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/17 12:01:01 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/17 12:33:45 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,7 @@ void	sort_stacks(t_storage *storage, size_t l, size_t r);
 void	sort_stack_b(t_storage *storage, size_t l, size_t r);
 
 // set_min_max_val.c
-//void	set_max(t_stack *stack, t_storage *storage);
-int	set_max(t_stack *stack, int count, t_storage *storage);
+void	set_max(t_stack *stack, t_storage *storage);
 void	set_min(t_stack *stack, t_storage *storage);
 
 // operations.c
