@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 21:26:53 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/17 11:57:37 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/17 12:22:21 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void	sort_stack_b(t_storage *storage, size_t l, size_t r)
 	x = (l + r) / 2;
 	y = (x + r) / 2;
 	count = count_more_than_pivot(storage->b, storage->sorted[x]);
-	if (l <= r && r - l <= 25)
+	if (l <= r && r - l <= 3) //25
 	{
 		push_all_to_a(storage, l, r);
 		return ;
