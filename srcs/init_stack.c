@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 21:26:49 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/17 13:47:22 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/17 14:19:57 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,34 +61,6 @@ static t_stack	*alloc_stack(t_stack *head, t_storage *storage)
 	}
 	return (stack);
 }
-
-/*
-t_stack	*init_stack(int argc, char **argv, t_storage *storage)
-{
-	t_stack	*head;
-	t_stack	*tmp;
-	int		i;
-
-	head = alloc_stack(NULL, storage);
-	head->index = 0;
-	tmp = head;
-	i = 0;
-	while (i < argc)
-	{
-		tmp->next = alloc_stack(head, storage);
-		tmp->next->prev = tmp;
-		tmp = tmp->next;
-		tmp->index = (size_t)(i + 1);
-		tmp->next = NULL;
-		tmp->val = atoi_ps(argv[i], head, storage);
-		i++;
-	}
-	tmp->next = head;
-	head->prev = tmp;
-	head->val = i;
-	return (head);
-}
-*/
 
 t_stack	*init_stack(int argc, char **argv, t_storage *storage)
 {
