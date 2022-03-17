@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 21:26:52 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/17 12:30:49 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/17 14:25:28 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static t_stack	*locate_max(t_stack *stack)
 	ret = stack;
 	while (stack->index != 0)
 	{
-		if (stack->val > max)
+		if (max < stack->val)
 		{
 			max = stack->val;
 			ret = stack;

@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 21:26:53 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/17 12:31:58 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/17 14:28:42 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ static void	split_into_three(t_storage *storage, size_t x, size_t y, int count)
 	rb = 0;
 	while (0 < count)
 	{
-		if (storage->b->next->val > storage->sorted[y])
+		if (storage->sorted[y] < storage->b->next->val)
 		{
 			p += push(storage->b, storage->a, storage);
 			count--;
 		}
-		else if (storage->b->next->val > storage->sorted[x])
+		else if (storage->sorted[x] < storage->b->next->val)
 		{
 			p += push(storage->b, storage->a, storage);
 			ra += rot_up(storage->a, storage);
@@ -89,28 +89,6 @@ static int	count_more_than_pivot(t_stack *b, int pivot)
 	}
 	return (count);
 }
-
-/*
-void	sort_stack_b(t_storage *storage, size_t l, size_t r)
-{
-	int		count;
-	size_t	x;
-	size_t	y;
-
-	x = (l + r) / 2;
-	y = (x + r) / 2;
-	count = count_more_than_pivot(storage->b, storage->sorted[x]);
-	if (l <= r && r - l <= 25)
-	{
-		push_all_to_a(storage, l, r);
-		return ;
-	}
-	split_into_three(storage, x, y, count);
-	sort_stack_b(storage, y + 1, r);
-	sort_stack_b(storage, x + 1, y);
-	sort_stack_b(storage, l, x);
-}
-*/
 
 void	sort_stack_b(t_storage *storage, size_t l, size_t r)
 {

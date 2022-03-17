@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 21:26:52 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/16 21:26:52 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/17 14:24:41 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	case_two(t_stack *stack, t_storage *storage)
 
 	a = stack->next->val;
 	b = stack->next->next->val;
-	if (a > b)
+	if (b < a)
 		swap(stack, storage);
 }
 
@@ -57,7 +57,7 @@ static void	case_four_to_six(t_stack *a, t_stack *b, t_storage *storage)
 
 	size = a->val;
 	count = 0;
-	while (size - count > 3)
+	while (3 < size - count)
 	{
 		set_min(a, storage);
 		push(a, b, storage);
