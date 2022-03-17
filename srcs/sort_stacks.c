@@ -6,18 +6,18 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 21:26:53 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/03/16 22:04:04 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/03/17 08:59:16 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	reverse_rotate_b(t_storage *storage, int r_count)
+static void	reverse_rotate_b(t_storage *storage, int r)
 {
-	while (0 < r_count && storage->first_flag == OFF)
+	while (0 < r && storage->first_flag == OFF)
 	{
 		rot_down(storage->b, storage);
-		r_count--;
+		r--;
 	}
 }
 
@@ -30,15 +30,15 @@ static int	push_and_rot_up_b(t_storage *storage)
 
 static void	push_small_to_b(t_storage *storage, size_t x, size_t y, int count)
 {
-	int	r_count;
+	int	r;
 
-	r_count = 0;
+	r = 0;
 	while (0 < count)
 	{
 		if (storage->a->next->val <= storage->sorted[x])
 		{
 			if (storage->first_flag == ON)
-				r_count += push_and_rot_up_b(storage);
+				r += push_and_rot_up_b(storage);
 			else
 				push(storage->a, storage->b, storage);
 			count--;
@@ -46,7 +46,7 @@ static void	push_small_to_b(t_storage *storage, size_t x, size_t y, int count)
 		else if (storage->a->next->val <= storage->sorted[y])
 		{
 			if (storage->first_flag == OFF)
-				r_count += push_and_rot_up_b(storage);
+				r += push_and_rot_up_b(storage);
 			else
 				push(storage->a, storage->b, storage);
 			count--;
@@ -54,7 +54,7 @@ static void	push_small_to_b(t_storage *storage, size_t x, size_t y, int count)
 		else
 			rot_up(storage->a, storage);
 	}
-	reverse_rotate_b(storage, r_count);
+	reverse_rotate_b(storage, r);
 }
 
 static int	count_pivot_or_less(t_stack *a, int pivot)
