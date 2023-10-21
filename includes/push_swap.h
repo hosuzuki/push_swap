@@ -13,8 +13,8 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../libft/includes/libft.h"
-# include "../libft/includes/get_next_line.h"
+# include "../lib/ft_printf/libft/includes/libft.h"
+# include "get_next_line.h"
 
 typedef struct s_stack
 {
