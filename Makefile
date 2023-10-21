@@ -1,6 +1,8 @@
-NAME = push_swap
-BONUS_NAME = checker
-SRC = srcs/main.c \
+NAME		= push_swap
+BONUS_NAME	= checker
+LIB			= ./ft_printf/libftprintf.a
+
+SRCS			= srcs/main.c \
 			srcs/validate_argv.c \
 			srcs/init_stack.c \
 			srcs/free.c \
@@ -13,8 +15,10 @@ SRC = srcs/main.c \
 		 	srcs/sort_stacks.c \
 			srcs/sort_stack_b.c \
 			srcs/optimize_cmds.c \
-			srcs/print_cmds.c 
-BONUS_SRC = srcs/checker.c \
+			srcs/print_cmds.c \
+			srcs/get_next_line.c
+
+BONUS_SRCS	= srcs/checker.c \
 			srcs/validate_argv.c \
 			srcs/init_stack.c \
 			srcs/free.c \
@@ -26,38 +30,61 @@ BONUS_SRC = srcs/checker.c \
 		 	srcs/sort_stacks.c \
 			srcs/sort_stack_b.c \
 			srcs/operations_two_at_once.c 
-OBJ = $(SRC:.c=.o)
-BONUS_OBJ = $(BONUS_SRC:.c=.o)
+
+SRCDIR		= srcs/
+OBJDIR		= objs/
+OBJS		= $(patsubst srcs/%.c, $(OBJDIR)%.o, $(SRCS))
+BONUS_OBJS	= $(BONUS_SRCS:.c=.o)
+DEPS		= $(OBJS:.o=.d)
+
 ifdef BONUS_ON
-NAME = $(BONUS_NAME)
-SRC = $(BONUS_SRC)
-OBJ = $(BONUS_OBJ)
+NAME		= $(BONUS_NAME)
+SRCS		= $(BONUS_SRCS)
+OBJS		= $(BONUS_OBJ)
 endif
 
-LIB = ./libft/libft.a
 
-CC = gcc
-FLAGS = -Wall -Wextra -Werror
-HEAD = -I ./includes
-RM = rm -f
+# **************************************************************************** #
+
+CC		= gcc
+CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	+= -MMD -MP
+HEAD	= -I./includes/
+RM		= rm -f
+ARC		= ar rc
+RAN		= ranlib
+
+GR		= \033[32;1m
+RE		= \033[31;1m
+YE		= \033[33;1m
+CY		= \033[36;1m
+RC		= \033[0m
+
+# **************************************************************************** #
 
 all : $(NAME)
 
-$(NAME) : $(OBJ) $(LIB)
-	$(CC) $(FLAGS) $(OBJ) $(LIB) -o $(NAME) -g
+$(NAME) : $(LIB) $(OBJDIR) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $(NAME)
 
 $(LIB) :
-	$(MAKE) -C ./libft
+	$(MAKE) --no-print-directory -C ./lib/ft_printf
+	@printf "$(YE)=== Library is created [$(CC)] ===\n--- $(LIB)$(RC)\n"
 
-.c.o :
-	$(CC) $(FLAGS) -c $< -o $(<:.c=.o) $(HEAD) -g
+$(OBJDIR) :
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)=== Compiling ... [$(CC) $(CFLAGS)] ===$(RC)\n"
+
+$(OBJDIR)%.o: $(SRCDIR)%.c
+	@$(CC) $(CFLAGS) -c -o $@ $< $(HEAD)
+	@printf "$(GR)+$(RC)"
 
 clean :
-	$(MAKE) clean -C ./libft
-	$(RM) $(OBJ) $(BONUS_OBJ)
+	$(MAKE) --no-print-directory clean -C ./lib/ft_printf
+	$(RM) -r $(OBJDIR)
 
 fclean : clean
-	$(MAKE) fclean -C ./libft
+	$(MAKE) --no-print-directory fclean -C ./lib/ft_printf
 	$(RM) $(NAME) $(BONUS_NAME)
 
 re : fclean all
@@ -66,3 +93,5 @@ bonus :
 	$(MAKE) BONUS_ON=1
 
 .PHONEY : all clean fclean re bonus
+
+-include $(DEPS)
