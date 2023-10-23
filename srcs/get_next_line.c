@@ -69,7 +69,7 @@ static int	ft_read(int fd, t_node *buf_lst)
 	{
 		buf = NULL;
 		if (ft_strchr(buf_lst->str, '\n'))
-			return (GOOD);
+			return (HAVE_NEW_LINE);
 		buf = (char *)malloc(sizeof(char) * ((size_t)BUFFER_SIZE + 1));
 		rc = read(fd, buf, BUFFER_SIZE);
 		if (rc == -1 || rc == 0)
@@ -94,7 +94,7 @@ static t_node	*ft_create_lst(int fd, t_node **holder)
 
 	if (!(*holder))
 	{
-		buf_lst = ft_lstnew(fd, "");
+		buf_lst = ft_lstnewfd(fd, "");
 		*holder = buf_lst;
 		return (buf_lst);
 	}
@@ -105,7 +105,7 @@ static t_node	*ft_create_lst(int fd, t_node **holder)
 			return (buf_lst);
 		buf_lst = buf_lst->next;
 	}
-	buf_lst = ft_lstnew(fd, "");
+	buf_lst = ft_lstnewfd(fd, "");
 	if (!buf_lst)
 		return (buf_lst);
 	buf_lst->next = *holder;

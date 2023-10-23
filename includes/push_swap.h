@@ -53,8 +53,8 @@ enum e_error_handling
 
 # define ALREADY_SORTED -2
 # define NOT_SORTED -1
-# define ON 0
-# define OFF 1
+//# define ON 0  //these are on ft_printf.h, too
+//# define OFF 1
 # define SA 2
 # define SB 3
 # define PA 4

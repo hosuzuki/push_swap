@@ -16,23 +16,18 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include "../lib/ft_printf/includes/ft_printf.h"
 
-# define GOOD 1
+# define BUFFER_SIZE 100
+# define HAVE_NEW_LINE 1
 # define ERROR -1
 # define END 0
 
-typedef struct s_node
-{
-	int				fd;
-	char			*str;
-	struct s_node	*next;
-}	t_node;
-
-size_t	ft_strlen(const char *s);
-char	*ft_strjoin(const char *s1, const char *s2);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strndup(const char *content, size_t len);
-t_node	*ft_lstnew(int fd, void *content);
+// size_t	ft_strlen(const char *s);
+// char	*ft_strjoin(const char *s1, const char *s2);
+// char	*ft_strchr(const char *s, int c);
+// char	*ft_strndup(const char *content, size_t len);
+// t_node	*ft_lstnew(int fd, void *content);
 char	*get_next_line(int fd);
 
 #endif

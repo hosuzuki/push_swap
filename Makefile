@@ -1,6 +1,6 @@
 NAME		= push_swap
 BONUS_NAME	= checker
-LIB			= ./ft_printf/libftprintf.a
+LIB			= ./lib/ft_printf/libftprintf.a
 
 SRCS			= srcs/main.c \
 			srcs/validate_argv.c \
