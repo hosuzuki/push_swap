@@ -65,6 +65,7 @@ RC		= \033[0m
 all : $(NAME)
 
 $(NAME) : $(LIB) $(OBJDIR) $(OBJS)
+	@printf "\n"
 	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $(NAME)
 	@printf "$(GR)=== Compiled ==="
 	@printf "\n--- $(notdir $(SRCS))$(RC)\n"
@@ -72,7 +73,6 @@ $(NAME) : $(LIB) $(OBJDIR) $(OBJS)
 
 $(LIB) :
 	$(MAKE) --no-print-directory -C ./lib/ft_printf
-	@printf "$(YE)=== Library is created [$(CC)] ===\n--- $(LIB)$(RC)\n"
 
 $(OBJDIR) :
 	@mkdir -p $(OBJDIR)
