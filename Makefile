@@ -66,6 +66,9 @@ all : $(NAME)
 
 $(NAME) : $(LIB) $(OBJDIR) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $(NAME)
+	@printf "$(GR)=== Compiled ==="
+	@printf "\n--- $(notdir $(SRCS))$(RC)\n"
+	@printf "$(YE)=== Linked [$(CC)] ===\n--- $(NAME)$(RC)\n"
 
 $(LIB) :
 	$(MAKE) --no-print-directory -C ./lib/ft_printf
@@ -73,7 +76,7 @@ $(LIB) :
 
 $(OBJDIR) :
 	@mkdir -p $(OBJDIR)
-	@printf "$(GR)=== Compiling ... [$(CC) $(CFLAGS)] ===$(RC)\n"
+	@printf "$(GR)=== Compiling $(NAME) ... [$(CC) $(CFLAGS)] ===$(RC)\n"
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
 	@$(CC) $(CFLAGS) -c -o $@ $< $(HEAD)
@@ -86,6 +89,7 @@ clean :
 fclean : clean
 	$(MAKE) --no-print-directory fclean -C ./lib/ft_printf
 	$(RM) $(NAME) $(BONUS_NAME)
+	@printf "$(RE)=== Removed ===\n--- $(C_NAME), $(S_NAME)$(RC)\n"
 
 re : fclean all
 
