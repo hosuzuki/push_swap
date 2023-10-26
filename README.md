@@ -84,6 +84,8 @@ And them, move to the cloned directory.
 cd push_swap
 ```
 
+<br>
+
 #### 🌗 2. Run make to generate `push_swap`
 
 run the ``make`` command.
@@ -119,6 +121,8 @@ For instance, run the command below.
 
 Alter the execution, it should output `rra` which means rotating stuck A down by one. (`2 3 1` -> `1 2 3`)
 
+<br>
+
 #### 🌗 4. Generate `checker` executable
 
 Runnning a command below generates an executable called `checker`.
@@ -128,7 +132,6 @@ make bonus
 <br>
 
 #### 🌗 5. Run `checker`
-
 
 ```C
 ./push_swap [set of intergers] | ./checker [set of intergers <same as on the left>] 
@@ -146,12 +149,18 @@ For instance, run the command below.
 
 After the execution, it should output `OK` which means that `push_swap`'s instructions have correctly sorted the given set of integers.
 
+<br><br>
+
 ## 🌕 Tester
 
 | File Name  | Description   |
 |:-------------|:---------------|
 | checker_mac                        | swap first two elements of stack A |
 | checker_linux                      | swap first two elements of stack B |
+
+
+| File Name  | Description   |
+|:-------------|:---------------|
 | [test_mac.sh](test_mac.sh)         | sa and sb at the same time |
 | [test_linux.sh](test_linux.sh)     | pops the first elememt on B and puts it on top of A |
 | [test_checker.sh](test_checker.sh) | rotates stuck B up by one |
@@ -160,6 +169,8 @@ After the execution, it should output `OK` which means that `push_swap`'s instru
 | [test_valgrind.sh](test_valgrind.sh) | rotates stuck A up by one|
 | [test_review.sh](test_review.sh)   | pops the first elememt on A and puts it on top of B |
 
+
+<br><br>
 
 ## 🌕 Visual result
 
