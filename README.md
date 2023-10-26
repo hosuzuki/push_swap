@@ -84,7 +84,7 @@ And them, move to the cloned directory.
 cd push_swap
 ```
 
-#### 🌗 2. Run make
+#### 🌗 2. Run make to generate `push_swap`
 
 run the ``make`` command.
 ```shell
@@ -103,7 +103,7 @@ It then generates the executable `push_swap` in the root directory.
 
 <br>
 
-#### 🌗 3. Run push_swap
+#### 🌗 3. Run `push_swap`
 
 ```C
 ./push_swap [set of intergers]
@@ -127,7 +127,7 @@ make bonus
 ```
 <br>
 
-#### 🌗 5. Run checker
+#### 🌗 5. Run `checker`
 
 
 ```C
