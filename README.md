@@ -148,21 +148,18 @@ After the execution, it should output `OK` which means that `push_swap`'s instru
 
 ## 🌕 Tester
 
-[ft_lstnew](srcs/ft_lstnew.c)
-
 | File Name  | Description   |
 |:-------------|:---------------|
-| checker_mac   | swap first two elements of stack A |
-| checker_linux | swap first two elements of stack B |
-| [test_mac.sh](test_mac.sh)  | sa and sb at the same time |
-| [test_linux.sh](test_linux.sh) | pops the first elememt on B and puts it on top of A |
-|             | pops the first elememt on A and puts it on top of B |
-| ra            | rotates stuck A up by one|
-| rb            | rotates stuck B up by one |
-| rr            | rotates both A and B up by one |
-| rra           | rotates stuck A down by one |
-| rrb           | rotates stuck B down by one |
-| rrr           | rotates both A and B down by one |
+| checker_mac                        | swap first two elements of stack A |
+| checker_linux                      | swap first two elements of stack B |
+| [test_mac.sh](test_mac.sh)         | sa and sb at the same time |
+| [test_linux.sh](test_linux.sh)     | pops the first elememt on B and puts it on top of A |
+| [test_checker.sh](test_checker.sh) | rotates stuck B up by one |
+| [test_error.sh](test_error.sh)     | rotates both A and B up by one |
+| [test_error_checker.sh](test_error_checker.sh) | rotates stuck A down by one |
+| [test_valgrind.sh](test_valgrind.sh) | rotates stuck A up by one|
+| [test_review.sh](test_review.sh)   | pops the first elememt on A and puts it on top of B |
+
 
 ## 🌕 Visual result
 
