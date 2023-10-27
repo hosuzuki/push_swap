@@ -179,13 +179,13 @@ If the program checker_mac or checker_linux displays `KO`, it means that the pus
 
 | File Name  | Description   |
 |:-------------|:---------------|
-| [test_mac.sh](test_mac.sh)         | sa and sb at the same time |
-| [test_linux.sh](test_linux.sh)     | pops the first elememt on B and puts it on top of A |
-| [test_checker.sh](test_checker.sh) | rotates stuck B up by one |
-| [test_error.sh](test_error.sh)     | rotates both A and B up by one |
-| [test_error_checker.sh](test_error_checker.sh) | rotates stuck A down by one |
-| [test_valgrind.sh](test_valgrind.sh) | rotates stuck A up by one|
-| [test_review.sh](test_review.sh)   | pops the first elememt on A and puts it on top of B |
+| [test_mac.sh](test_mac.sh)         | Run multiple tests using the checker_mac mentioned above |
+| [test_linux.sh](test_linux.sh)     | Run multiple tests using the checker_linux mentioned above|
+| [test_checker.sh](test_checker.sh) | Run multiple tests using the checker created by `make bonus` command |
+| [test_error.sh](test_error.sh)     | A test program to verify if 'Error' is displayed correctly when an error occurs |
+| [test_error_checker.sh](test_error_checker.sh) | A test program that uses checker to verify that 'Error' is displayed correctly when an error occurs|
+| [test_valgrind.sh](test_valgrind.sh) | Run a Valgrind test to verify if there are no memory leaks |
+| [test_review.sh](test_review.sh)   | Run some tests for 42's review |
 
 <br><br>
 
