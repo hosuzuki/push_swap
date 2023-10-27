@@ -27,18 +27,18 @@ This program generates an executable called `push_swap` which displays the instr
 <br>
 
 | instructions  | Description   |
-|:-------------:|:---------------|
-| sa            | swap first two elements of stack A |
-| sb            | swap first two elements of stack B |
+|:-------------|:---------------|
+| sa (swap A)   | Swap first two elements at the top of stack A |
+| sb            | Swap first two elements at the top of stack B |
 | ss            | sa and sb at the same time |
-| pa            | pops the first elememt on B and puts it on top of A |
-| pb            | pops the first elememt on A and puts it on top of B |
-| ra            | rotates stuck A up by one|
-| rb            | rotates stuck B up by one |
-| rr            | rotates both A and B up by one |
-| rra           | rotates stuck A down by one |
-| rrb           | rotates stuck B down by one |
-| rrr           | rotates both A and B down by one |
+| pa (push A)   | Pops the first elememt at the top of B and puts it at the top of A |
+| pb            | Pops the first elememt at the top of A and puts it at the top of B |
+| ra (rotate A) | shift up all elements of stack A by 1 (The first element becomes the last one) |
+| rb            | Shift up all elements of stack B by 1 (The first element becomes the last one) |
+| rr            | ra and rb at the same time |
+| rra (reverse rotate A) | Shift down all elements of stack A by 1 (The last element becomes the first one) |
+| rrb           | Shift down all elements of stack B by 1 (The last element becomes the first one) |
+| rrr           | rra and rrb at the same time |
 
 <br>
 
@@ -157,6 +157,8 @@ After the execution, it should output `OK` which means that `push_swap`'s instru
 |:-------------|:---------------|
 | checker_mac                        | swap first two elements of stack A |
 | checker_linux                      | swap first two elements of stack B |
+
+
 
 
 | File Name  | Description   |
