@@ -202,7 +202,8 @@ These are multiple test files located in the root directory to use.
 
 ## 🌕 Visual result
 
-Thanks to ~~, you can see how my algorithm works below.
+Thanks to [o-reo](https://github.com/o-reo)'s [push_swap_visualizer](https://github.com/o-reo/push_swap_visualizer), you can see how my algorithm works below.
 
+![ezgif com-optimize](https://github.com/hosuzuki/push_swap/assets/81731043/c20d03f3-ad38-4377-8d8e-afb9db20f8ab)
 
 [1]: https://42tokyo.jp/
